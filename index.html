@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>游趣游戏 · 最后一盏灯</title>
+<meta name="description" content="游趣游戏的作品：《最后一盏灯》——开着小飞机守住海边灯塔，把镇上的灯一盏盏点回来。">
+<link rel="icon" href="lastlamp-icon.png">
+<style>
+  :root {
+    color-scheme: dark;
+    --ground: #0c1230; --panel: #141b3d; --line: rgba(160, 176, 255, 0.2);
+    --ink: #eef0ff; --dim: #a8afd6; --lamp: #ffcf6e; --lamp-ink: #3a2208;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font: 16px/1.75 "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 16px 56px; }
+  .studio { font-size: 13px; letter-spacing: 0.2em; color: var(--lamp); margin: 0 0 28px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  .card img.hero { display: block; width: 100%; height: auto; aspect-ratio: 1024 / 500; object-fit: cover; }
+  .body { padding: 20px 22px 24px; display: grid; gap: 14px; }
+  .title { display: flex; gap: 14px; align-items: center; }
+  .title img { width: 64px; height: 64px; border-radius: 14px; flex: none; }
+  h1 { font-size: 26px; line-height: 1.25; margin: 0; letter-spacing: 0.04em; }
+  h1 span { display: block; font-size: 14px; color: var(--dim); letter-spacing: 0.08em; font-weight: 400; }
+  p { margin: 0; }
+  .en { color: var(--dim); font-size: 14px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+  .links a { text-decoration: none; border-radius: 999px; padding: 8px 18px; font-size: 15px; }
+  .play { background: var(--lamp); color: var(--lamp-ink); font-weight: 700; }
+  .ghost { color: var(--ink); border: 1px solid var(--line); }
+  .links a:hover, .links a:focus-visible { outline: 2px solid var(--lamp); outline-offset: 2px; }
+  footer { margin-top: 32px; color: var(--dim); font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="studio">游趣游戏</p>
+
+  <article class="card">
+    <img class="hero" src="lastlamp-feature.jpg" alt="《最后一盏灯》：夜里的海边小镇和亮着的灯塔" width="1024" height="500">
+    <div class="body">
+      <div class="title">
+        <img src="lastlamp-icon.png" alt="" width="64" height="64">
+        <h1>最后一盏灯<span lang="en">The Last Lamp</span></h1>
+      </div>
+      <p>开着小飞机守住海边灯塔，打退每晚从海上来的影怪，把镇上的灯一盏盏点回来。</p>
+      <p class="en" lang="en">Fly a tiny biplane, guard the lighthouse and relight a seaside town at night.</p>
+      <div class="links">
+        <a class="play" href="https://play.google.com/store/apps/details?id=com.lastlamp.game">在 Google Play 下载</a>
+        <a class="ghost" href="lastlamp/privacy.html">隐私政策 · Privacy Policy</a>
+      </div>
+    </div>
+  </article>
+
+  <footer>© 2026 游趣游戏</footer>
+</main>
+</body>
+</html>
