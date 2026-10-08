@@ -2,58 +2,401 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>森澜岛游戏 · 最后一盏灯</title>
-<meta name="description" content="森澜岛游戏的作品：《最后一盏灯》——开着小飞机守住海边灯塔，把镇上的灯一盏盏点回来。">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>最后一盏灯 · 森澜岛游戏</title>
+<meta name="description" content="《最后一盏灯》——开着小飞机守住海边灯塔，打退每晚从海上来的影怪，把镇上的灯一盏盏点回来。Google Play 下载，或直接下载 APK 安装包（附安装教程）。">
+<meta name="theme-color" content="#0a1030">
+<meta property="og:title" content="最后一盏灯 · The Last Lamp">
+<meta property="og:description" content="开着小飞机守住海边灯塔，把镇上的灯一盏盏点回来。Android 单机游戏，Google Play 或 APK 下载。">
+<meta property="og:image" content="https://nickooi.github.io/assets/hero-sm.jpg">
+<meta property="og:type" content="website">
 <link rel="icon" href="lastlamp-icon.png">
+<!--
+  森澜岛游戏官网（GitHub Pages，仓库 NickOoi/NickOoi.github.io）。
+  更新 APK 时要改的地方：download/ 下放新文件；本页搜索 “APK_VERSION” 注释旁边的版本号、大小、日期、SHA-256 和下载链接。
+  app-ads.txt 给 AdMob 用，别删。
+-->
 <style>
   :root {
     color-scheme: dark;
-    --ground: #0c1230; --panel: #141b3d; --line: rgba(160, 176, 255, 0.2);
-    --ink: #eef0ff; --dim: #a8afd6; --lamp: #ffcf6e; --lamp-ink: #3a2208;
+    --ground: #0a1030;
+    --ground-2: #0e1640;
+    --panel: #131c47;
+    --panel-2: #1a2558;
+    --line: rgba(170, 186, 255, 0.18);
+    --ink: #f1f2ff;
+    --dim: #aeb5dd;
+    --faint: #7f88b8;
+    --lamp: #ffcf6e;
+    --lamp-2: #f0a640;
+    --lamp-ink: #3a2208;
+    --teal: #4fe3c1;
+    --serif: "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", "SimSun", serif;
+    --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Hiragino Sans GB", system-ui, sans-serif;
+    --wrap: 1120px;
   }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--ground); color: var(--ink); font: 16px/1.75 "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif; }
-  main { max-width: 760px; margin: 0 auto; padding: 40px 16px 56px; }
-  .studio { font-size: 13px; letter-spacing: 0.2em; color: var(--lamp); margin: 0 0 28px; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
-  .card img.hero { display: block; width: 100%; height: auto; aspect-ratio: 1024 / 500; object-fit: cover; }
-  .body { padding: 20px 22px 24px; display: grid; gap: 14px; }
-  .title { display: flex; gap: 14px; align-items: center; }
-  .title img { width: 64px; height: 64px; border-radius: 14px; flex: none; }
-  h1 { font-size: 26px; line-height: 1.25; margin: 0; letter-spacing: 0.04em; }
-  h1 span { display: block; font-size: 14px; color: var(--dim); letter-spacing: 0.08em; font-weight: 400; }
-  p { margin: 0; }
-  .en { color: var(--dim); font-size: 14px; }
-  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
-  .links a { text-decoration: none; border-radius: 999px; padding: 8px 18px; font-size: 15px; }
-  .play { background: var(--lamp); color: var(--lamp-ink); font-weight: 700; }
-  .ghost { color: var(--ink); border: 1px solid var(--line); }
-  .links a:hover, .links a:focus-visible { outline: 2px solid var(--lamp); outline-offset: 2px; }
-  footer { margin-top: 32px; color: var(--dim); font-size: 13px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font: 16px/1.75 var(--sans); -webkit-text-size-adjust: 100%; }
+  img { max-width: 100%; display: block; }
+  a { color: var(--lamp); }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 20px; }
+
+  /* 顶栏 */
+  .nav { position: sticky; top: 0; z-index: 10; background: rgba(10, 16, 48, 0.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
+  .nav .wrap { display: flex; align-items: center; gap: 20px; height: 60px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-family: var(--serif); font-size: 19px; letter-spacing: 0.12em; white-space: nowrap; }
+  .brand img { width: 30px; height: 30px; border-radius: 8px; }
+  .nav nav { margin-left: auto; display: flex; gap: 4px; overflow-x: auto; }
+  .nav nav a { color: var(--dim); text-decoration: none; font-size: 15px; padding: 6px 12px; border-radius: 999px; white-space: nowrap; }
+  .nav nav a:hover, .nav nav a:focus-visible { color: var(--ink); background: rgba(255, 255, 255, 0.06); outline: none; }
+
+  /* 首屏 */
+  .hero { position: relative; min-height: min(86vh, 760px); display: flex; align-items: flex-end; overflow: hidden; background: #070b22 url("assets/hero.jpg") center 40% / cover no-repeat; }
+  .hero::before { content: ""; position: absolute; inset: 0; background:
+    linear-gradient(180deg, rgba(10, 16, 48, 0.25) 0%, rgba(10, 16, 48, 0) 30%, rgba(10, 16, 48, 0.55) 62%, var(--ground) 100%),
+    linear-gradient(90deg, rgba(10, 16, 48, 0.9) 0%, rgba(10, 16, 48, 0.62) 38%, rgba(10, 16, 48, 0.08) 68%, rgba(10, 16, 48, 0) 100%); }
+  .hero .wrap { position: relative; width: 100%; padding-block: 56px 64px; }
+  .hero .logo { width: min(440px, 80vw); filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.55)); margin-left: -8px; }
+  .hero h1 { margin: 18px 0 8px; max-width: 30em; font-family: var(--serif); font-weight: 600; font-size: clamp(20px, 2.6vw, 28px); line-height: 1.5; letter-spacing: 0.06em; text-wrap: balance; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 26px; padding: 0; list-style: none; }
+  .chips li { font-size: 13px; color: var(--ink); padding: 3px 12px; border-radius: 999px; background: rgba(10, 16, 48, 0.55); border: 1px solid var(--line); }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 16px; padding: 13px 24px; border-radius: 999px; line-height: 1.2; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .btn:active { transform: translateY(1px); }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn-gold { color: var(--lamp-ink); background: linear-gradient(180deg, #ffe39a, var(--lamp-2)); box-shadow: 0 6px 24px rgba(255, 190, 90, 0.35); }
+  .btn-gold:hover, .btn-gold:focus-visible { box-shadow: 0 8px 32px rgba(255, 190, 90, 0.55); outline: none; }
+  .btn-line { color: var(--ink); border: 1.5px solid rgba(255, 207, 110, 0.7); background: rgba(10, 16, 48, 0.55); }
+  .btn-line:hover, .btn-line:focus-visible { background: rgba(255, 207, 110, 0.12); outline: none; }
+  .btn small { display: block; font-weight: 400; font-size: 12px; opacity: 0.8; margin-top: 2px; }
+  .hint { margin: 12px 0 0; font-size: 14px; color: var(--dim); }
+  .hint a { color: var(--lamp); }
+
+  /* 通用小节 */
+  section { padding-block: 72px; }
+  .kicker { margin: 0 0 6px; color: var(--lamp); font-size: 13px; letter-spacing: 0.28em; }
+  h2 { margin: 0 0 12px; font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 3.4vw, 36px); letter-spacing: 0.08em; line-height: 1.3; text-wrap: balance; }
+  .lead { margin: 0 0 36px; max-width: 40em; color: var(--dim); }
+
+  /* 游戏特色 */
+  .features { display: grid; gap: 56px; }
+  .feature { display: grid; grid-template-columns: 1.25fr 1fr; gap: 40px; align-items: center; }
+  .feature:nth-child(even) { grid-template-columns: 1fr 1.25fr; }
+  .feature:nth-child(even) .shot { order: 2; }
+  .shot { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45); aspect-ratio: 16 / 9; background: var(--panel); }
+  .shot img { width: 100%; height: 100%; object-fit: cover; }
+  .feature h3 { margin: 0 0 10px; font-family: var(--serif); font-weight: 600; font-size: 24px; letter-spacing: 0.06em; }
+  .feature h3 .new { font-family: var(--sans); font-size: 12px; font-weight: 700; color: var(--lamp-ink); background: var(--lamp); border-radius: 6px; padding: 1px 7px; margin-left: 8px; vertical-align: 4px; letter-spacing: 0.04em; }
+  .feature p { margin: 0 0 10px; color: var(--dim); }
+  .feature ul { margin: 0; padding-left: 1.1em; color: var(--dim); }
+  .feature li { margin: 2px 0; }
+  .feature li::marker { color: var(--lamp); }
+
+  /* 截图条 */
+  .gallery { display: grid; grid-auto-flow: column; grid-auto-columns: min(560px, 82vw); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; margin-top: 8px; }
+  .gallery .shot { scroll-snap-align: start; }
+
+  /* 下载 */
+  .downloads { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+  .dl { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 26px 26px 24px; display: flex; flex-direction: column; gap: 14px; }
+  .dl.apk { border-color: rgba(255, 207, 110, 0.45); background: linear-gradient(180deg, var(--panel-2), var(--panel)); }
+  .dl h3 { margin: 0; font-size: 20px; letter-spacing: 0.04em; display: flex; align-items: center; gap: 10px; }
+  .dl h3 svg { width: 26px; height: 26px; }
+  .dl p { margin: 0; color: var(--dim); font-size: 15px; }
+  .meta { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; margin: 0; font-size: 14px; }
+  .meta dt { color: var(--faint); }
+  .meta dd { margin: 0; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .apk-row { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .qr { display: flex; gap: 12px; align-items: center; font-size: 13px; color: var(--dim); }
+  .qr img { width: 96px; height: 96px; border-radius: 8px; background: #fff; padding: 6px; }
+  .hash { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--faint); }
+  .hash code { font: 12px/1.5 ui-monospace, "Cascadia Mono", Consolas, monospace; color: var(--dim); word-break: break-all; }
+  .hash button { font: inherit; color: var(--lamp); background: none; border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px; cursor: pointer; }
+  .note { margin: 18px 0 0; padding: 14px 18px; border-radius: 12px; background: rgba(79, 227, 193, 0.08); border: 1px solid rgba(79, 227, 193, 0.28); color: var(--dim); font-size: 14px; }
+  .note b { color: var(--ink); }
+
+  /* 安装教程 */
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: step; }
+  .step { counter-increment: step; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 20px 18px 18px; display: flex; flex-direction: column; gap: 12px; }
+  .step h3 { margin: 0; font-size: 17px; display: flex; align-items: center; gap: 10px; }
+  .step h3::before { content: counter(step); flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 14px; font-weight: 700; color: var(--lamp-ink); background: var(--lamp); }
+  .step p { margin: 0; color: var(--dim); font-size: 14px; }
+  /* 手机提示框的示意（不是真截图，各品牌的字样会稍有不同） */
+  .mock { margin-top: auto; border-radius: 12px; background: #f4f5f9; color: #222; padding: 12px 14px; font-size: 13px; line-height: 1.55; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06); }
+  .mock .t { font-weight: 700; margin-bottom: 4px; }
+  .mock .row { display: flex; justify-content: flex-end; gap: 14px; margin-top: 8px; color: #1a6ae0; font-weight: 600; }
+  .mock .row .tap { position: relative; }
+  .mock .row .tap::after { content: ""; position: absolute; inset: -4px -8px; border: 2px solid #f0a640; border-radius: 8px; }
+  .mock .sw { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .mock .toggle { flex: none; width: 34px; height: 20px; border-radius: 10px; background: #1a6ae0; position: relative; box-shadow: 0 0 0 2px #f0a640; }
+  .mock .toggle::after { content: ""; position: absolute; right: 2px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; }
+  .mock .file { display: flex; gap: 10px; align-items: center; }
+  .mock .file img { width: 32px; height: 32px; border-radius: 8px; }
+  .mock .file small { display: block; color: #777; }
+
+  .brands { margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .brand-tip { background: var(--ground-2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; font-size: 14px; color: var(--dim); }
+  .brand-tip b { display: block; color: var(--ink); margin-bottom: 4px; }
+
+  .faq { margin-top: 36px; display: grid; gap: 10px; }
+  details { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 0 18px; }
+  summary { cursor: pointer; padding: 14px 0; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--lamp); font-weight: 400; font-size: 20px; line-height: 1; }
+  details[open] summary::after { content: "−"; }
+  details p { margin: 0 0 14px; color: var(--dim); font-size: 15px; }
+
+  /* 关于 / 页脚 */
+  .about { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 28px; }
+  .about p { margin: 0; color: var(--dim); }
+  .about .links { display: flex; gap: 10px; flex-wrap: wrap; }
+  footer { padding-block: 32px 48px; color: var(--faint); font-size: 13px; border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+  footer a { color: var(--dim); }
+
+  @media (max-width: 860px) {
+    section { padding-block: 56px; }
+    .feature, .feature:nth-child(even) { grid-template-columns: 1fr; gap: 18px; }
+    .feature:nth-child(even) .shot { order: 0; }
+    .downloads { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .about { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .nav nav a { padding: 6px 8px; font-size: 14px; }
+    .brand span { display: none; }
+    .hero { min-height: 640px; background-image: url("assets/hero-sm.jpg"); background-position: 55% 30%; }
+    .hero .wrap { padding-block: 40px 44px; }
+    .btn { width: 100%; justify-content: center; }
+    .steps { grid-template-columns: 1fr; }
+    .qr, .desk-only { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
 </style>
 </head>
 <body>
-<main>
-  <p class="studio">森澜岛游戏</p>
 
-  <article class="card">
-    <img class="hero" src="lastlamp-feature.jpg" alt="《最后一盏灯》：夜里的海边小镇和亮着的灯塔" width="1024" height="500">
-    <div class="body">
-      <div class="title">
-        <img src="lastlamp-icon.png" alt="" width="64" height="64">
-        <h1>最后一盏灯<span lang="en">The Last Lamp</span></h1>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="lastlamp-icon.png" alt="" width="30" height="30"><span>森澜岛游戏</span></a>
+    <nav aria-label="页面导航">
+      <a href="#game">游戏</a>
+      <a href="#download">下载</a>
+      <a href="#install">安装教程</a>
+      <a href="lastlamp/privacy.html">隐私政策</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <img class="logo" src="assets/logo.png" alt="最后一盏灯" width="700" height="170">
+      <h1>开着小飞机守住海边灯塔，打退每晚从海上来的影怪，把镇上的灯一盏盏点回来。</h1>
+      <ul class="chips">
+        <li>Android 8.0 及以上</li>
+        <li>免费 · 没有内购</li>
+        <li>单机 · 不联网也能玩</li>
+        <li>横屏 · 简体中文</li>
+      </ul>
+      <div class="cta">
+        <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.lastlamp.game">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.6 2.3 13.9 12l-9.3 9.7c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1Zm10.4 10.9 2.3 2.4-10.4 6c-.3.2-.6.2-.9.2l9-8.6Zm4.2-3.3 2.2 1.3c.8.5.8 1.6 0 2.1l-2.2 1.3-2.6-2.4 2.6-2.3ZM6.9 1.6c.3 0 .6.1.9.2l10.4 6-2.3 2.4-9-8.6Z"/></svg>
+          Google Play 下载
+        </a>
+        <!-- APK_VERSION：版本号、大小 -->
+        <a class="btn btn-line" href="#download">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1ZM5 19h14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2Z"/></svg>
+          <span>下载 APK 安装包<small>6.0.0 · 40 MB · 上不了 Google Play 的手机用</small></span>
+        </a>
       </div>
-      <p>开着小飞机守住海边灯塔，打退每晚从海上来的影怪，把镇上的灯一盏盏点回来。</p>
-      <p class="en" lang="en">Fly a tiny biplane, guard the lighthouse and relight a seaside town at night.</p>
-      <div class="links">
-        <a class="play" href="https://play.google.com/store/apps/details?id=com.lastlamp.game">在 Google Play 下载</a>
-        <a class="ghost" href="lastlamp/privacy.html">隐私政策 · Privacy Policy</a>
+      <p class="hint">第一次装 APK？看 <a href="#install">安装教程</a>，四步就好。</p>
+    </div>
+  </div>
+
+  <section id="game">
+    <div class="wrap">
+      <p class="kicker">游戏</p>
+      <h2>守住小镇的最后一盏灯</h2>
+      <p class="lead">影怪每晚都从海上来。海边小镇只剩灯塔还亮着——开上你的小双翼机守住它，把被拆坏的家一栋栋修好，把居民一个个救回来。</p>
+
+      <div class="features">
+        <article class="feature">
+          <div class="shot"><img src="assets/shots/02-boss.jpg" alt="战斗：小飞机迎战影怪首领" loading="lazy" width="1280" height="720"></div>
+          <div>
+            <h3>开飞机，守灯塔</h3>
+            <p>左手摇杆、右手按住开火，三波影怪一局大约一分半钟。</p>
+            <ul>
+              <li>8 种影怪：咬灯塔的、撞灯塔的、拆房子的、会召唤小怪的首领……</li>
+              <li>灯塔的 5 格灯火全灭就输，房子被拆了回镇上再修</li>
+            </ul>
+          </div>
+        </article>
+        <article class="feature">
+          <div class="shot"><img src="assets/shots/06-ahe.jpg" alt="小镇：救回来的居民在街上" loading="lazy" width="1280" height="720"></div>
+          <div>
+            <h3>救回居民，重建小镇</h3>
+            <p>居民被困在废墟里，飞过去按住救援键把他们救出来；帮他们把家修好，看着热汤铺开张、长明灯亮起、集市挂满灯笼、风车重新转起来。</p>
+          </div>
+        </article>
+        <article class="feature">
+          <div class="shot"><img src="assets/shots/07-xiaoman.jpg" alt="雾桥街" loading="lazy" width="1280" height="720"></div>
+          <div>
+            <h3>五个街区，各有故事</h3>
+            <p>灯塔湾、雾桥街、集市街、坡上人家、风车田。手绘的夜色港湾、石桥、集市、山坡、麦田，还有一群拟人小动物居民，配上原创音乐和音效。</p>
+          </div>
+        </article>
+        <article class="feature">
+          <div class="shot"><img src="assets/shots/hangar.jpg" alt="机库：升级弹头、引擎、减震、绞盘" loading="lazy" width="1280" height="720"></div>
+          <div>
+            <h3>机库升级 · 居民补给<span class="new">6.0 新</span></h3>
+            <p>用守夜赢来的灯火碎片，升级弹头、引擎、减震和绞盘；居民的店开张以后，出战前还能买补给：热汤护住灯塔、长明灯芯加快射速、麦饼让子弹更有力。</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="gallery" aria-label="更多游戏截图">
+        <div class="shot"><img src="assets/shots/shield.jpg" alt="带着热汤护罩出战" loading="lazy" width="1280" height="720"></div>
+        <div class="shot"><img src="assets/shots/04-harbor.jpg" alt="灯塔湾的战斗" loading="lazy" width="1280" height="720"></div>
+        <div class="shot"><img src="assets/shots/05-repair.jpg" alt="修房子：现在和修好后" loading="lazy" width="1280" height="720"></div>
+        <div class="shot"><img src="assets/shots/supplies.jpg" alt="出战补给" loading="lazy" width="1280" height="720"></div>
       </div>
     </div>
-  </article>
+  </section>
 
-  <footer>© 2026 森澜岛游戏</footer>
+  <section id="download">
+    <div class="wrap">
+      <p class="kicker">下载</p>
+      <h2>两种方式，选一个就行</h2>
+      <p class="lead">能打开 Google Play 的手机，推荐从 Google Play 安装，以后会自动更新。上不了 Google Play 的手机，直接下载 APK 安装包，按下面的教程装。</p>
+
+      <div class="downloads">
+        <div class="dl">
+          <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffcf6e" d="M4.6 2.3 13.9 12l-9.3 9.7c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1Zm10.4 10.9 2.3 2.4-10.4 6c-.3.2-.6.2-.9.2l9-8.6Zm4.2-3.3 2.2 1.3c.8.5.8 1.6 0 2.1l-2.2 1.3-2.6-2.4 2.6-2.3ZM6.9 1.6c.3 0 .6.1.9.2l10.4 6-2.3 2.4-9-8.6Z"/></svg>Google Play</h3>
+          <p>在 Google Play 搜「最后一盏灯」，或点下面的按钮。自动更新，换手机也方便。</p>
+          <div><a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.lastlamp.game">去 Google Play 下载</a></div>
+        </div>
+
+        <div class="dl apk">
+          <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffcf6e" d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1ZM5 19h14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2Z"/></svg>APK 安装包</h3>
+          <p>和 Google Play 上是同一个游戏。用手机浏览器打开本页下载<span class="desk-only">；在电脑上看的话，用手机扫右边的二维码</span>。</p>
+          <!-- APK_VERSION：版本号、大小、日期、最低系统 -->
+          <dl class="meta">
+            <dt>版本</dt><dd>6.0.0</dd>
+            <dt>大小</dt><dd>40 MB（41,958,581 字节）</dd>
+            <dt>更新日期</dt><dd>2026 年 10 月 8 日</dd>
+            <dt>系统要求</dt><dd>Android 8.0 及以上</dd>
+          </dl>
+          <div class="apk-row">
+            <!-- APK_VERSION：下载链接 -->
+            <a class="btn btn-gold" href="download/lastlamp-6.0.0.apk" download>下载 APK（40 MB）</a>
+            <div class="qr"><img src="assets/qr-download.png" alt="扫码在手机上打开下载页" width="96" height="96"><span>手机扫码<br>打开下载页</span></div>
+          </div>
+          <!-- APK_VERSION：SHA-256 -->
+          <div class="hash">SHA-256：<code id="sha">9d3cafec696333cad26326ba05da7eaf6e58a818b5863cc17f0040b3b71b45e7</code><button type="button" id="copy-sha">复制</button></div>
+        </div>
+      </div>
+
+      <p class="note"><b>没有 Google 服务的手机也能玩。</b>这类手机上广告可能加载不出来，只是少了“看广告多拿碎片 / 免费修房”的按钮，游戏本身完全不受影响。</p>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="wrap">
+      <p class="kicker">安装教程</p>
+      <h2>APK 怎么装：四步</h2>
+      <p class="lead">安卓手机默认不让装“应用商店以外”的安装包，第一次要手动允许一下。下面灰白色的方框是提示的大概样子，不同品牌的字样会稍有不同，意思都一样。</p>
+
+      <ol class="steps">
+        <li class="step">
+          <h3>下载安装包</h3>
+          <p>用手机浏览器打开本页，点“下载 APK”。如果浏览器提醒“这类文件可能有害”，选“仍然下载”或“保留”。</p>
+          <div class="mock"><div class="t">要保留此文件吗？</div>lastlamp-6.0.0.apk 这类文件可能会损害你的设备。<div class="row"><span>取消</span><span class="tap">仍然下载</span></div></div>
+        </li>
+        <li class="step">
+          <h3>打开安装包</h3>
+          <p>下载完成后点通知栏或浏览器里的下载记录；找不到就打开“文件管理 → 下载（Download）”，点 <b>lastlamp-6.0.0.apk</b>。</p>
+          <div class="mock"><div class="file"><img src="lastlamp-icon.png" alt=""><div>lastlamp-6.0.0.apk<small>40 MB · 下载完成</small></div></div></div>
+        </li>
+        <li class="step">
+          <h3>允许安装</h3>
+          <p>第一次会提示不能安装未知来源的应用：点“设置”，打开“允许来自此来源的应用”，再返回。</p>
+          <div class="mock"><div class="sw"><span>允许来自此来源的应用</span><span class="toggle" aria-hidden="true"></span></div></div>
+        </li>
+        <li class="step">
+          <h3>安装并打开</h3>
+          <p>点“安装”，等几秒，装好点“打开”。桌面上会出现“最后一盏灯”，以后从桌面打开就行。</p>
+          <div class="mock"><div class="file"><img src="lastlamp-icon.png" alt=""><div>最后一盏灯<small>要安装此应用吗？</small></div></div><div class="row"><span>取消</span><span class="tap">安装</span></div></div>
+        </li>
+      </ol>
+
+      <div class="brands">
+        <div class="brand-tip"><b>华为 · 荣耀</b>如果提示“纯净模式”拦截，点“仍然安装”或“继续安装”；也可以在“设置 → 系统和更新 → 纯净模式”里暂时关掉。</div>
+        <div class="brand-tip"><b>小米 · 红米</b>可能会进入安全检查页面，等几秒后点“继续安装”；如果开着“纯净模式”，按提示允许这一次安装。</div>
+        <div class="brand-tip"><b>OPPO · 一加 · realme · vivo</b>可能要求先验证账号密码，或倒数几秒后才能点“继续安装”，这是系统的安全提醒，照提示点即可。</div>
+        <div class="brand-tip"><b>三星 · 其他</b>如果没有弹出开关，到“设置 → 应用 → 特殊访问权限 → 安装未知应用”，给你用来下载的浏览器打开“允许”。</div>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>提示“解析包时出现问题”或“安装包无效”</summary>
+          <p>多半是没下载完，删掉后重新下载一次；也可能是手机系统低于 Android 8.0，这类手机装不了。</p>
+        </details>
+        <details>
+          <summary>提示“应用未安装”或“与已安装的应用冲突”</summary>
+          <p>本站的 APK 和 Google Play 版签名相同，可以互相覆盖安装。出现这个提示，通常是手机里装过别处下载的“最后一盏灯”，或者装的是更新的版本（不能用旧版覆盖新版）。前一种要先卸载旧的再装——注意卸载会清掉手机上的游戏进度。</p>
+        </details>
+        <details>
+          <summary>以后怎么更新？进度会不会丢？</summary>
+          <p>有新版本时回到本页下载新的 APK，直接安装覆盖就行，进度保留。本站 APK 和 Google Play 版签名相同，以后能上 Google Play 了也可以直接在 Play 里更新，进度都在。</p>
+        </details>
+        <details>
+          <summary>安装包安全吗？</summary>
+          <p>APK 和 Google Play 上的是同一个安装包，用的是同一个官方签名（从 Google Play 后台导出），只在这个网站提供，不要从别的网站下载。想核对文件有没有被改过，可以算一下文件的 SHA-256，和“下载”里写的那串对比。</p>
+        </details>
+        <details>
+          <summary>游戏需要哪些权限？</summary>
+          <p>只用到网络和广告 ID（都是 Google 广告要用的）。不读通讯录、相册、位置，也不需要注册账号；游戏进度只存在你的手机里。详见<a href="lastlamp/privacy.html">隐私政策</a>。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="about">
+        <div>
+          <p class="kicker">关于我们</p>
+          <h2 style="margin-bottom:6px">森澜岛游戏</h2>
+          <p>独立游戏开发者，做温暖、耐玩的小游戏。有问题或建议，请通过 Google Play 商店页面里的“开发者联系方式”给我们发邮件。</p>
+        </div>
+        <div class="links">
+          <a class="btn btn-line" href="https://play.google.com/store/apps/details?id=com.lastlamp.game">Google Play 商店页</a>
+          <a class="btn btn-line" href="lastlamp/privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 森澜岛游戏 · 最后一盏灯 The Last Lamp</span>
+    <span><a href="lastlamp/privacy.html">隐私政策 · Privacy Policy</a></span>
+  </div>
+</footer>
+
+<script>
+  // 复制 SHA-256（浏览器不让写剪贴板时，选中文字让玩家自己复制）
+  document.getElementById('copy-sha').addEventListener('click', function () {
+    var code = document.getElementById('sha')
+    var btn = this
+    var done = function () { btn.textContent = '已复制'; setTimeout(function () { btn.textContent = '复制' }, 1600) }
+    var select = function () { var r = document.createRange(); r.selectNodeContents(code); var s = getSelection(); s.removeAllRanges(); s.addRange(r) }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(code.textContent).then(done, select)
+    else select()
+  })
+</script>
 </body>
 </html>
