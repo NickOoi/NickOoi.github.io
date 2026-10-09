@@ -7,21 +7,27 @@
 <meta name="description" content="《最后一盏灯》——开着小飞机守住海边灯塔，打退每晚从海上来的影怪，把镇上的灯一盏盏点回来。Google Play 下载，或直接下载 APK 安装包（附安装教程）。">
 <meta name="theme-color" content="#0a1030">
 <meta property="og:title" content="最后一盏灯 · The Last Lamp">
-<meta property="og:description" content="开着小飞机守住海边灯塔，把镇上的灯一盏盏点回来。Android 单机游戏，Google Play 或 APK 下载。">
+<meta property="og:description" content="开着小飞机守住海边灯塔，把镇上的灯一盏盏点回来。Android 单机游戏，中文 / English，Google Play 或 APK 下载。">
 <meta property="og:image" content="https://nickooi.github.io/assets/hero-sm.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="assets/brand/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
 <!--
   森澜岛游戏官网（GitHub Pages，仓库 NickOoi/NickOoi.github.io）。
-  更新 APK 时要改的地方：download/ 下放新文件；本页搜索 “APK_VERSION” 注释旁边的版本号、大小、日期、SHA-256 和下载链接。
+  更新 APK 时要改的地方：download/ 下放新文件；本页搜索 “APK_VERSION” 注释旁边的版本号、大小、日期、SHA-256 和下载链接
+  （中文写在网页里，英文在页尾脚本的 APK 常量里，两处都要改）。
   app-ads.txt 给 AdMob 用，别删。
-  标题用的两种字体（马善政毛笔楷书、思源宋体 Noto Serif SC，都是 SIL OFL 开源字体）在 assets/fonts/，只含本页标题用到的字；改了标题文字要重新生成子集（见 assets/fonts/README.txt）。
+  标题用的字体（马善政毛笔楷书、思源宋体 Noto Serif SC、英文的 Cinzel，都是 SIL OFL 开源字体）在 assets/fonts/，只含本页标题用到的字；改了中文标题文字要重新生成子集（见 assets/fonts/README.txt）。
+  中文 / English（2026-10-09 起）：中文写在网页里（不开脚本、搜索引擎看到的都是中文）；英文在页尾脚本的 EN 对照表里，
+  元素上的 data-i18n="键" 换文字、data-i18n-alt / data-i18n-label 换图片说明 / 无障碍标签、data-en-src 换成英文界面的截图。
+  用哪种：地址带 ?lang=en / ?lang=zh → 访客在顶栏点过的（localStorage site.lang）→ 浏览器语言（zh 开头中文，其他英文）。
+  加一段新文字：网页里写中文、加 data-i18n="新键"，再在 EN 里加同名的英文。
 -->
 <style>
   /* 标题字体：自托管的子集（国内打不开 Google 字体服务），没加载出来就用下面的系统字体 */
   @font-face { font-family: "LL Brush"; src: url("assets/fonts/mashanzheng-sub.woff2") format("woff2"); font-display: swap; }
   @font-face { font-family: "LL Song"; src: url("assets/fonts/notoserifsc-600-sub.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+  @font-face { font-family: "LL Cinzel"; src: url("assets/fonts/cinzel-700-sub.woff2") format("woff2"); font-weight: 600 700; font-display: swap; }
   :root {
     color-scheme: dark;
     --ground: #0a1030;
@@ -41,6 +47,16 @@
     --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Hiragino Sans GB", system-ui, sans-serif;
     --wrap: 1120px;
   }
+  /* 英文：标题换 Cinzel（和游戏标题字里的 THE LAST LAMP 同一类罗马大写体），正文用西文字体打头（中文字体里的引号是全角的） */
+  html[lang="en"] {
+    --serif: "LL Cinzel", Georgia, "Times New Roman", serif;
+    --brush: "LL Cinzel", Georgia, "Times New Roman", serif;
+    --sans: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  }
+  html[lang="en"] h2 { letter-spacing: 0.02em; font-weight: 700; }
+  html[lang="en"] .hero h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: 0.01em; }
+  html[lang="en"] .kicker { letter-spacing: 0.16em; }
+  html[lang="en"] .feature h3, html[lang="en"] .dl h3, html[lang="en"] .step h3 { letter-spacing: 0.02em; }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 72px; }
   body { margin: 0; background: var(--ground); color: var(--ink); font: 16px/1.75 var(--sans); -webkit-text-size-adjust: 100%; }
@@ -51,11 +67,16 @@
   /* 顶栏 */
   .nav { position: sticky; top: 0; z-index: 10; background: rgba(10, 16, 48, 0.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
   .nav .wrap { display: flex; align-items: center; gap: 20px; height: 60px; }
-  .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-family: var(--brush); font-size: 24px; letter-spacing: 0.08em; white-space: nowrap; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-family: "LL Brush", "LL Song", "STKaiti", "KaiTi", serif; font-size: 24px; letter-spacing: 0.08em; white-space: nowrap; }
   .brand img { width: 38px; height: 38px; border-radius: 50%; }
   .nav nav { margin-left: auto; display: flex; gap: 4px; overflow-x: auto; }
   .nav nav a { color: var(--dim); text-decoration: none; font-size: 15px; padding: 6px 12px; border-radius: 999px; white-space: nowrap; }
   .nav nav a:hover, .nav nav a:focus-visible { color: var(--ink); background: rgba(255, 255, 255, 0.06); outline: none; }
+  /* 语言切换：和游戏开始画面左下角那颗一样的样子 */
+  .lang-switch { flex: none; display: flex; padding: 3px; border-radius: 999px; background: rgba(10, 16, 44, 0.7); border: 1px solid var(--line); }
+  .lang-switch button { font: 600 14px/1 "Segoe UI", "Microsoft YaHei", sans-serif; color: var(--dim); background: none; border: 0; padding: 7px 11px; border-radius: 999px; cursor: pointer; }
+  .lang-switch button[aria-pressed="true"] { color: var(--lamp-ink); background: linear-gradient(180deg, #ffe09a, var(--lamp-2)); font-weight: 700; }
+  .lang-switch button:focus-visible { outline: 2px solid var(--lamp); outline-offset: 1px; }
 
   /* 首屏 */
   .hero { position: relative; min-height: min(86vh, 760px); display: flex; align-items: flex-end; overflow: hidden; background: #070b22 url("assets/hero.jpg") center 40% / cover no-repeat; }
@@ -64,6 +85,8 @@
     linear-gradient(90deg, rgba(10, 16, 48, 0.9) 0%, rgba(10, 16, 48, 0.62) 38%, rgba(10, 16, 48, 0.08) 68%, rgba(10, 16, 48, 0) 100%); }
   .hero .wrap { position: relative; width: 100%; padding-block: 56px 64px; }
   .hero .logo { width: min(440px, 80vw); filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.55)); margin-left: -8px; }
+  .news { display: inline-flex; align-items: center; gap: 10px; margin: 16px 0 0; padding: 6px 14px 6px 6px; border-radius: 999px; background: rgba(10, 16, 48, 0.65); border: 1px solid rgba(79, 227, 193, 0.45); font-size: 14px; color: var(--ink); }
+  .news b { font-size: 12px; font-weight: 800; color: #0b1433; background: var(--teal); border-radius: 999px; padding: 2px 9px; letter-spacing: 0.04em; }
   .hero h1 { margin: 18px 0 8px; max-width: 30em; font-family: var(--serif); font-weight: 600; font-size: clamp(20px, 2.6vw, 28px); line-height: 1.5; letter-spacing: 0.06em; text-wrap: balance; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6); }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 26px; padding: 0; list-style: none; }
   .chips li { font-size: 13px; color: var(--ink); padding: 3px 12px; border-radius: 999px; background: rgba(10, 16, 48, 0.55); border: 1px solid var(--line); }
@@ -176,13 +199,18 @@
     .about { grid-template-columns: 1fr; padding: 20px; }
   }
   @media (max-width: 560px) {
-    .nav nav a { padding: 6px 8px; font-size: 14px; }
+    .nav .wrap { gap: 10px; }
+    .nav nav a { padding: 6px 7px; font-size: 14px; }
+    .lang-switch button { padding: 6px 8px; font-size: 13px; }
     .brand span { display: none; }
     .hero { min-height: 640px; background-image: url("assets/hero-sm.jpg"); background-position: 55% 30%; }
     .hero .wrap { padding-block: 40px 44px; }
     .btn { width: 100%; justify-content: center; }
     .steps { grid-template-columns: 1fr; }
     .qr, .desk-only { display: none; }
+  }
+  @media (max-width: 400px) {
+    .nav nav a[href="lastlamp/privacy.html"] { display: none; } /* 窄屏顶栏放不下：隐私政策页脚和“关于我们”里都有 */
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
 </style>
@@ -192,109 +220,114 @@
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/brand/emblem.webp" alt="" width="38" height="38"><span>森澜岛游戏</span></a>
-    <nav aria-label="页面导航">
-      <a href="#game">游戏</a>
-      <a href="#download">下载</a>
-      <a href="#install">安装教程</a>
-      <a href="lastlamp/privacy.html">隐私政策</a>
+    <nav aria-label="页面导航" data-i18n-label="nav.label">
+      <a href="#game" data-i18n="nav.game">游戏</a>
+      <a href="#download" data-i18n="nav.download">下载</a>
+      <a href="#install" data-i18n="nav.install">安装教程</a>
+      <a href="lastlamp/privacy.html" data-i18n="nav.privacy">隐私政策</a>
     </nav>
+    <div class="lang-switch" role="group" aria-label="语言 Language">
+      <button type="button" data-lang="zh" lang="zh-CN" aria-pressed="true">中文</button>
+      <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+    </div>
   </div>
 </header>
 
 <main id="top">
   <div class="hero">
     <div class="wrap">
-      <img class="logo" src="assets/logo.png" alt="最后一盏灯" width="700" height="170">
-      <h1>开着小飞机守住海边灯塔，打退每晚从海上来的影怪，把镇上的灯一盏盏点回来。</h1>
+      <img class="logo" src="assets/logo.png" alt="最后一盏灯" data-i18n-alt="hero.logoAlt" width="700" height="170">
+      <p class="news"><b>6.0.1</b><span data-i18n="hero.news">游戏现已支持英文：跟着手机语言自动切换，开始画面也能切换</span></p>
+      <h1 data-i18n="hero.h1">开着小飞机守住海边灯塔，打退每晚从海上来的影怪，把镇上的灯一盏盏点回来。</h1>
       <ul class="chips">
-        <li>Android 8.0 及以上</li>
-        <li>免费 · 没有内购</li>
-        <li>单机 · 不联网也能玩</li>
-        <li>横屏 · 简体中文</li>
+        <li data-i18n="hero.chip1">Android 8.0 及以上</li>
+        <li data-i18n="hero.chip2">免费 · 没有内购</li>
+        <li data-i18n="hero.chip3">单机 · 不联网也能玩</li>
+        <li data-i18n="hero.chip4">横屏 · 中文 / English</li>
       </ul>
       <div class="cta">
         <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.lastlamp.game">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.6 2.3 13.9 12l-9.3 9.7c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1Zm10.4 10.9 2.3 2.4-10.4 6c-.3.2-.6.2-.9.2l9-8.6Zm4.2-3.3 2.2 1.3c.8.5.8 1.6 0 2.1l-2.2 1.3-2.6-2.4 2.6-2.3ZM6.9 1.6c.3 0 .6.1.9.2l10.4 6-2.3 2.4-9-8.6Z"/></svg>
-          Google Play 下载
+          <span data-i18n="hero.play">Google Play 下载</span>
         </a>
         <!-- APK_VERSION：版本号、大小 -->
         <a class="btn btn-line" href="#download">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1ZM5 19h14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2Z"/></svg>
-          <span>下载 APK 安装包<small>6.0.0 · 40 MB · 上不了 Google Play 的手机用</small></span>
+          <span data-i18n="hero.apk">下载 APK 安装包<small>6.0.0 · 40 MB · 上不了 Google Play 的手机用</small></span>
         </a>
       </div>
-      <p class="hint">第一次装 APK？看 <a href="#install">安装教程</a>，四步就好。</p>
+      <p class="hint" data-i18n="hero.hint">第一次装 APK？看 <a href="#install">安装教程</a>，四步就好。</p>
     </div>
   </div>
 
   <section id="game">
     <div class="wrap">
-      <p class="kicker">游戏</p>
-      <h2>守住小镇的最后一盏灯</h2>
-      <p class="lead">影怪每晚都从海上来。海边小镇只剩灯塔还亮着——开上你的小双翼机守住它，把被拆坏的家一栋栋修好，把居民一个个救回来。</p>
+      <p class="kicker" data-i18n="game.kicker">游戏</p>
+      <h2 data-i18n="game.h2">守住小镇的最后一盏灯</h2>
+      <p class="lead" data-i18n="game.lead">影怪每晚都从海上来。海边小镇只剩灯塔还亮着——开上你的小双翼机守住它，把被拆坏的家一栋栋修好，把居民一个个救回来。</p>
 
       <div class="features">
         <article class="feature">
-          <div class="shot"><img src="assets/shots/02-boss.jpg" alt="战斗：小飞机迎战影怪首领" loading="lazy" width="1280" height="720"></div>
+          <div class="shot"><img src="assets/shots/02-boss.jpg" data-en-src="assets/shots/en/boss.jpg" alt="战斗：小飞机迎战影怪首领" data-i18n-alt="shot.boss" loading="lazy" width="1280" height="720"></div>
           <div>
-            <h3>开飞机，守灯塔</h3>
-            <p>左手摇杆、右手按住开火，三波影怪一局大约一分半钟。</p>
+            <h3 data-i18n="f1.h3">开飞机，守灯塔</h3>
+            <p data-i18n="f1.p">左手摇杆、右手按住开火，三波影怪一局大约一分半钟。</p>
             <ul>
-              <li>8 种影怪：咬灯塔的、撞灯塔的、拆房子的、会召唤小怪的首领……</li>
-              <li>灯塔的 5 格灯火全灭就输，房子被拆了回镇上再修</li>
+              <li data-i18n="f1.li1">8 种影怪：咬灯塔的、撞灯塔的、拆房子的、会召唤小怪的首领……</li>
+              <li data-i18n="f1.li2">灯塔的 5 格灯火全灭就输，房子被拆了回镇上再修</li>
             </ul>
           </div>
         </article>
         <article class="feature">
-          <div class="shot"><img src="assets/shots/06-ahe.jpg" alt="小镇：救回来的居民在街上" loading="lazy" width="1280" height="720"></div>
+          <div class="shot"><img src="assets/shots/06-ahe.jpg" data-en-src="assets/shots/en/ahe.jpg" alt="小镇：救回来的居民在街上" data-i18n-alt="shot.ahe" loading="lazy" width="1280" height="720"></div>
           <div>
-            <h3>救回居民，重建小镇</h3>
-            <p>居民被困在废墟里，飞过去按住救援键把他们救出来；帮他们把家修好，看着热汤铺开张、长明灯亮起、集市挂满灯笼、风车重新转起来。</p>
+            <h3 data-i18n="f2.h3">救回居民，重建小镇</h3>
+            <p data-i18n="f2.p">居民被困在废墟里，飞过去按住救援键把他们救出来；帮他们把家修好，看着热汤铺开张、长明灯亮起、集市挂满灯笼、风车重新转起来。</p>
           </div>
         </article>
         <article class="feature">
-          <div class="shot"><img src="assets/shots/07-xiaoman.jpg" alt="雾桥街" loading="lazy" width="1280" height="720"></div>
+          <div class="shot"><img src="assets/shots/07-xiaoman.jpg" data-en-src="assets/shots/en/fogbridge.jpg" alt="雾桥街" data-i18n-alt="shot.fog" loading="lazy" width="1280" height="720"></div>
           <div>
-            <h3>五个街区，各有故事</h3>
-            <p>灯塔湾、雾桥街、集市街、坡上人家、风车田。手绘的夜色港湾、石桥、集市、山坡、麦田，还有一群拟人小动物居民，配上原创音乐和音效。</p>
+            <h3 data-i18n="f3.h3">五个街区，各有故事</h3>
+            <p data-i18n="f3.p">灯塔湾、雾桥街、集市街、坡上人家、风车田。手绘的夜色港湾、石桥、集市、山坡、麦田，还有一群拟人小动物居民，配上原创音乐和音效。</p>
           </div>
         </article>
         <article class="feature">
-          <div class="shot"><img src="assets/shots/hangar.jpg" alt="机库：升级弹头、引擎、减震、绞盘" loading="lazy" width="1280" height="720"></div>
+          <div class="shot"><img src="assets/shots/hangar.jpg" data-en-src="assets/shots/en/hangar.jpg" alt="机库：升级弹头、引擎、减震、绞盘" data-i18n-alt="shot.hangar" loading="lazy" width="1280" height="720"></div>
           <div>
-            <h3>机库升级 · 居民补给<span class="new">6.0 新</span></h3>
-            <p>用守夜赢来的灯火碎片，升级弹头、引擎、减震和绞盘；居民的店开张以后，出战前还能买补给：热汤护住灯塔、长明灯芯加快射速、麦饼让子弹更有力。</p>
+            <h3 data-i18n="f4.h3">机库升级 · 居民补给<span class="new">6.0 新</span></h3>
+            <p data-i18n="f4.p">用守夜赢来的灯火碎片，升级弹头、引擎、减震和绞盘；居民的店开张以后，出战前还能买补给：热汤护住灯塔、长明灯芯加快射速、麦饼让子弹更有力。</p>
           </div>
         </article>
       </div>
 
-      <div class="gallery" aria-label="更多游戏截图">
-        <div class="shot"><img src="assets/shots/shield.jpg" alt="带着热汤护罩出战" loading="lazy" width="1280" height="720"></div>
-        <div class="shot"><img src="assets/shots/04-harbor.jpg" alt="灯塔湾的战斗" loading="lazy" width="1280" height="720"></div>
-        <div class="shot"><img src="assets/shots/05-repair.jpg" alt="修房子：现在和修好后" loading="lazy" width="1280" height="720"></div>
-        <div class="shot"><img src="assets/shots/supplies.jpg" alt="出战补给" loading="lazy" width="1280" height="720"></div>
+      <div class="gallery" aria-label="更多游戏截图" data-i18n-label="gallery.label">
+        <div class="shot"><img src="assets/shots/shield.jpg" data-en-src="assets/shots/en/title.jpg" alt="带着热汤护罩出战" data-i18n-alt="shot.g1" loading="lazy" width="1280" height="720"></div>
+        <div class="shot"><img src="assets/shots/04-harbor.jpg" data-en-src="assets/shots/en/result.jpg" alt="灯塔湾的战斗" data-i18n-alt="shot.g2" loading="lazy" width="1280" height="720"></div>
+        <div class="shot"><img src="assets/shots/05-repair.jpg" data-en-src="assets/shots/en/repair.jpg" alt="修房子：现在和修好后" data-i18n-alt="shot.g3" loading="lazy" width="1280" height="720"></div>
+        <div class="shot"><img src="assets/shots/supplies.jpg" data-en-src="assets/shots/en/picker.jpg" alt="出战补给" data-i18n-alt="shot.g4" loading="lazy" width="1280" height="720"></div>
       </div>
     </div>
   </section>
 
   <section id="download">
     <div class="wrap">
-      <p class="kicker">下载</p>
-      <h2>两种方式，选一个就行</h2>
-      <p class="lead">能打开 Google Play 的手机，推荐从 Google Play 安装，以后会自动更新。上不了 Google Play 的手机，直接下载 APK 安装包，按下面的教程装。</p>
+      <p class="kicker" data-i18n="dl.kicker">下载</p>
+      <h2 data-i18n="dl.h2">两种方式，选一个就行</h2>
+      <p class="lead" data-i18n="dl.lead">能打开 Google Play 的手机，推荐从 Google Play 安装，以后会自动更新。上不了 Google Play 的手机，直接下载 APK 安装包，按下面的教程装。</p>
 
       <div class="downloads">
         <div class="dl">
           <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffcf6e" d="M4.6 2.3 13.9 12l-9.3 9.7c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1Zm10.4 10.9 2.3 2.4-10.4 6c-.3.2-.6.2-.9.2l9-8.6Zm4.2-3.3 2.2 1.3c.8.5.8 1.6 0 2.1l-2.2 1.3-2.6-2.4 2.6-2.3ZM6.9 1.6c.3 0 .6.1.9.2l10.4 6-2.3 2.4-9-8.6Z"/></svg>Google Play</h3>
-          <p>在 Google Play 搜「最后一盏灯」，或点下面的按钮。自动更新，换手机也方便。</p>
-          <div><a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.lastlamp.game">去 Google Play 下载</a></div>
+          <p data-i18n="dl.playP">在 Google Play 搜「最后一盏灯」，或点下面的按钮。自动更新，换手机也方便。</p>
+          <div><a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.lastlamp.game" data-i18n="dl.playBtn">去 Google Play 下载</a></div>
         </div>
 
         <div class="dl apk">
-          <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffcf6e" d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1ZM5 19h14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2Z"/></svg>APK 安装包</h3>
-          <p>和 Google Play 上是同一个游戏。用手机浏览器打开本页下载<span class="desk-only">；在电脑上看的话，用手机扫右边的二维码</span>。</p>
+          <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffcf6e" d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1ZM5 19h14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2Z"/></svg><span data-i18n="dl.apkH">APK 安装包</span></h3>
+          <p data-i18n="dl.apkP">和 Google Play 上是同一个游戏。用手机浏览器打开本页下载<span class="desk-only">；在电脑上看的话，用手机扫右边的二维码</span>。</p>
           <!-- APK_VERSION：版本号、大小、日期、最低系统 -->
-          <dl class="meta">
+          <dl class="meta" data-i18n="dl.meta">
             <dt>版本</dt><dd>6.0.0</dd>
             <dt>大小</dt><dd>40 MB（41,958,581 字节）</dd>
             <dt>更新日期</dt><dd>2026 年 10 月 8 日</dd>
@@ -302,74 +335,78 @@
           </dl>
           <div class="apk-row">
             <!-- APK_VERSION：下载链接 -->
-            <a class="btn btn-gold" href="download/lastlamp-6.0.0.apk" download>下载 APK（40 MB）</a>
-            <div class="qr"><img src="assets/qr-download.png" alt="扫码在手机上打开下载页" width="96" height="96"><span>手机扫码<br>打开下载页</span></div>
+            <a class="btn btn-gold" href="download/lastlamp-6.0.0.apk" download data-i18n="dl.apkBtn">下载 APK（40 MB）</a>
+            <div class="qr"><img src="assets/qr-download.png" alt="扫码在手机上打开下载页" data-i18n-alt="dl.qrAlt" width="96" height="96"><span data-i18n="dl.qr">手机扫码<br>打开下载页</span></div>
           </div>
           <!-- APK_VERSION：SHA-256 -->
-          <div class="hash">SHA-256：<code id="sha">9d3cafec696333cad26326ba05da7eaf6e58a818b5863cc17f0040b3b71b45e7</code><button type="button" id="copy-sha">复制</button></div>
+          <div class="hash"><span data-i18n="dl.shaLabel">SHA-256：</span><code id="sha">9d3cafec696333cad26326ba05da7eaf6e58a818b5863cc17f0040b3b71b45e7</code><button type="button" id="copy-sha" data-i18n="dl.copy">复制</button></div>
         </div>
       </div>
 
-      <p class="note"><b>没有 Google 服务的手机也能玩。</b>这类手机上广告可能加载不出来，只是少了“看广告多拿碎片 / 免费修房”的按钮，游戏本身完全不受影响。</p>
+      <p class="note" data-i18n="dl.note"><b>没有 Google 服务的手机也能玩。</b>这类手机上广告可能加载不出来，只是少了“看广告多拿碎片 / 免费修房”的按钮，游戏本身完全不受影响。</p>
     </div>
   </section>
 
   <section id="install">
     <div class="wrap">
-      <p class="kicker">安装教程</p>
-      <h2>APK 怎么装：四步</h2>
-      <p class="lead">安卓手机默认不让装“应用商店以外”的安装包，第一次要手动允许一下。下面灰白色的方框是提示的大概样子，不同品牌的字样会稍有不同，意思都一样。</p>
+      <p class="kicker" data-i18n="in.kicker">安装教程</p>
+      <h2 data-i18n="in.h2">APK 怎么装：四步</h2>
+      <p class="lead" data-i18n="in.lead">安卓手机默认不让装“应用商店以外”的安装包，第一次要手动允许一下。下面灰白色的方框是提示的大概样子，不同品牌的字样会稍有不同，意思都一样。</p>
 
       <ol class="steps">
         <li class="step">
-          <h3>下载安装包</h3>
-          <p>用手机浏览器打开本页，点“下载 APK”。如果浏览器提醒“这类文件可能有害”，选“仍然下载”或“保留”。</p>
-          <div class="mock"><div class="t">要保留此文件吗？</div>lastlamp-6.0.0.apk 这类文件可能会损害你的设备。<div class="row"><span>取消</span><span class="tap">仍然下载</span></div></div>
+          <h3 data-i18n="s1.h3">下载安装包</h3>
+          <p data-i18n="s1.p">用手机浏览器打开本页，点“下载 APK”。如果浏览器提醒“这类文件可能有害”，选“仍然下载”或“保留”。</p>
+          <div class="mock" data-i18n="s1.mock"><div class="t">要保留此文件吗？</div>lastlamp-6.0.0.apk 这类文件可能会损害你的设备。<div class="row"><span>取消</span><span class="tap">仍然下载</span></div></div>
         </li>
         <li class="step">
-          <h3>打开安装包</h3>
-          <p>下载完成后点通知栏或浏览器里的下载记录；找不到就打开“文件管理 → 下载（Download）”，点 <b>lastlamp-6.0.0.apk</b>。</p>
-          <div class="mock"><div class="file"><img src="lastlamp-icon.png" alt=""><div>lastlamp-6.0.0.apk<small>40 MB · 下载完成</small></div></div></div>
+          <h3 data-i18n="s2.h3">打开安装包</h3>
+          <p data-i18n="s2.p">下载完成后点通知栏或浏览器里的下载记录；找不到就打开“文件管理 → 下载（Download）”，点 <b>lastlamp-6.0.0.apk</b>。</p>
+          <div class="mock" data-i18n="s2.mock"><div class="file"><img src="lastlamp-icon.png" alt=""><div>lastlamp-6.0.0.apk<small>40 MB · 下载完成</small></div></div></div>
         </li>
         <li class="step">
-          <h3>允许安装</h3>
-          <p>第一次会提示不能安装未知来源的应用：点“设置”，打开“允许来自此来源的应用”，再返回。</p>
-          <div class="mock"><div class="sw"><span>允许来自此来源的应用</span><span class="toggle" aria-hidden="true"></span></div></div>
+          <h3 data-i18n="s3.h3">允许安装</h3>
+          <p data-i18n="s3.p">第一次会提示不能安装未知来源的应用：点“设置”，打开“允许来自此来源的应用”，再返回。</p>
+          <div class="mock" data-i18n="s3.mock"><div class="sw"><span>允许来自此来源的应用</span><span class="toggle" aria-hidden="true"></span></div></div>
         </li>
         <li class="step">
-          <h3>安装并打开</h3>
-          <p>点“安装”，等几秒，装好点“打开”。桌面上会出现“最后一盏灯”，以后从桌面打开就行。</p>
-          <div class="mock"><div class="file"><img src="lastlamp-icon.png" alt=""><div>最后一盏灯<small>要安装此应用吗？</small></div></div><div class="row"><span>取消</span><span class="tap">安装</span></div></div>
+          <h3 data-i18n="s4.h3">安装并打开</h3>
+          <p data-i18n="s4.p">点“安装”，等几秒，装好点“打开”。桌面上会出现“最后一盏灯”，以后从桌面打开就行。</p>
+          <div class="mock" data-i18n="s4.mock"><div class="file"><img src="lastlamp-icon.png" alt=""><div>最后一盏灯<small>要安装此应用吗？</small></div></div><div class="row"><span>取消</span><span class="tap">安装</span></div></div>
         </li>
       </ol>
 
       <div class="brands">
-        <div class="brand-tip"><b>华为 · 荣耀</b>如果提示“纯净模式”拦截，点“仍然安装”或“继续安装”；也可以在“设置 → 系统和更新 → 纯净模式”里暂时关掉。</div>
-        <div class="brand-tip"><b>小米 · 红米</b>可能会进入安全检查页面，等几秒后点“继续安装”；如果开着“纯净模式”，按提示允许这一次安装。</div>
-        <div class="brand-tip"><b>OPPO · 一加 · realme · vivo</b>可能要求先验证账号密码，或倒数几秒后才能点“继续安装”，这是系统的安全提醒，照提示点即可。</div>
-        <div class="brand-tip"><b>三星 · 其他</b>如果没有弹出开关，到“设置 → 应用 → 特殊访问权限 → 安装未知应用”，给你用来下载的浏览器打开“允许”。</div>
+        <div class="brand-tip" data-i18n="b1"><b>华为 · 荣耀</b>如果提示“纯净模式”拦截，点“仍然安装”或“继续安装”；也可以在“设置 → 系统和更新 → 纯净模式”里暂时关掉。</div>
+        <div class="brand-tip" data-i18n="b2"><b>小米 · 红米</b>可能会进入安全检查页面，等几秒后点“继续安装”；如果开着“纯净模式”，按提示允许这一次安装。</div>
+        <div class="brand-tip" data-i18n="b3"><b>OPPO · 一加 · realme · vivo</b>可能要求先验证账号密码，或倒数几秒后才能点“继续安装”，这是系统的安全提醒，照提示点即可。</div>
+        <div class="brand-tip" data-i18n="b4"><b>三星 · 其他</b>如果没有弹出开关，到“设置 → 应用 → 特殊访问权限 → 安装未知应用”，给你用来下载的浏览器打开“允许”。</div>
       </div>
 
       <div class="faq">
         <details>
-          <summary>提示“解析包时出现问题”或“安装包无效”</summary>
-          <p>多半是没下载完，删掉后重新下载一次；也可能是手机系统低于 Android 8.0，这类手机装不了。</p>
+          <summary data-i18n="q1">提示“解析包时出现问题”或“安装包无效”</summary>
+          <p data-i18n="a1">多半是没下载完，删掉后重新下载一次；也可能是手机系统低于 Android 8.0，这类手机装不了。</p>
         </details>
         <details>
-          <summary>提示“应用未安装”或“与已安装的应用冲突”</summary>
-          <p>本站的 APK 和 Google Play 版签名相同，可以互相覆盖安装。出现这个提示，通常是手机里装过别处下载的“最后一盏灯”，或者装的是更新的版本（不能用旧版覆盖新版）。前一种要先卸载旧的再装——注意卸载会清掉手机上的游戏进度。</p>
+          <summary data-i18n="q2">提示“应用未安装”或“与已安装的应用冲突”</summary>
+          <p data-i18n="a2">本站的 APK 和 Google Play 版签名相同，可以互相覆盖安装。出现这个提示，通常是手机里装过别处下载的“最后一盏灯”，或者装的是更新的版本（不能用旧版覆盖新版）。前一种要先卸载旧的再装——注意卸载会清掉手机上的游戏进度。</p>
         </details>
         <details>
-          <summary>以后怎么更新？进度会不会丢？</summary>
-          <p>有新版本时回到本页下载新的 APK，直接安装覆盖就行，进度保留。本站 APK 和 Google Play 版签名相同，以后能上 Google Play 了也可以直接在 Play 里更新，进度都在。</p>
+          <summary data-i18n="q3">以后怎么更新？进度会不会丢？</summary>
+          <p data-i18n="a3">有新版本时回到本页下载新的 APK，直接安装覆盖就行，进度保留。本站 APK 和 Google Play 版签名相同，以后能上 Google Play 了也可以直接在 Play 里更新，进度都在。</p>
         </details>
         <details>
-          <summary>安装包安全吗？</summary>
-          <p>APK 和 Google Play 上的是同一个安装包，用的是同一个官方签名（从 Google Play 后台导出），只在这个网站提供，不要从别的网站下载。想核对文件有没有被改过，可以算一下文件的 SHA-256，和“下载”里写的那串对比。</p>
+          <summary data-i18n="q4">安装包安全吗？</summary>
+          <p data-i18n="a4">APK 和 Google Play 上的是同一个安装包，用的是同一个官方签名（从 Google Play 后台导出），只在这个网站提供，不要从别的网站下载。想核对文件有没有被改过，可以算一下文件的 SHA-256，和“下载”里写的那串对比。</p>
         </details>
         <details>
-          <summary>游戏需要哪些权限？</summary>
-          <p>只用到网络和广告 ID（都是 Google 广告要用的）。不读通讯录、相册、位置，也不需要注册账号；游戏进度只存在你的手机里。详见<a href="lastlamp/privacy.html">隐私政策</a>。</p>
+          <summary data-i18n="q5">游戏需要哪些权限？</summary>
+          <p data-i18n="a5">只用到网络和广告 ID（都是 Google 广告要用的）。不读通讯录、相册、位置，也不需要注册账号；游戏进度只存在你的手机里。详见<a href="lastlamp/privacy.html">隐私政策</a>。</p>
+        </details>
+        <details>
+          <summary data-i18n="q6">游戏有英文吗？怎么切换？</summary>
+          <p data-i18n="a6">有，6.0.1 起支持中文和英文。第一次打开会跟着手机语言：中文手机显示中文，其他语言的手机显示英文。想换的话，在开始画面左下角点“中文 / English”。</p>
         </details>
       </div>
     </div>
@@ -377,16 +414,16 @@
 
   <section id="about">
     <div class="wrap">
-      <p class="kicker">关于我们</p>
+      <p class="kicker" data-i18n="ab.kicker">关于我们</p>
       <div class="studio">
-        <img class="banner" src="assets/brand/banner.webp" alt="森澜岛游戏 · 用心造世界，让快乐生生不息" width="1600" height="608" loading="lazy">
+        <img class="banner" src="assets/brand/banner.webp" alt="森澜岛游戏 · 用心造世界，让快乐生生不息" data-i18n-alt="ab.bannerAlt" width="1600" height="608" loading="lazy">
         <div class="about">
           <div>
-            <p>森澜岛游戏是一个独立游戏开发者，做温暖、耐玩、一个人也能慢慢玩下去的小游戏。用心造世界，让快乐生生不息。有问题或建议，请通过 Google Play 商店页面里的“开发者联系方式”给我们发邮件。</p>
+            <p data-i18n="ab.p">森澜岛游戏是一个独立游戏开发者，做温暖、耐玩、一个人也能慢慢玩下去的小游戏。用心造世界，让快乐生生不息。有问题或建议，请通过 Google Play 商店页面里的“开发者联系方式”给我们发邮件。</p>
           </div>
           <div class="links">
-            <a class="btn btn-line" href="https://play.google.com/store/apps/details?id=com.lastlamp.game">Google Play 商店页</a>
-            <a class="btn btn-line" href="lastlamp/privacy.html">隐私政策</a>
+            <a class="btn btn-line" href="https://play.google.com/store/apps/details?id=com.lastlamp.game" data-i18n="ab.play">Google Play 商店页</a>
+            <a class="btn btn-line" href="lastlamp/privacy.html" data-i18n="ab.privacy">隐私政策</a>
           </div>
         </div>
       </div>
@@ -402,11 +439,160 @@
 </footer>
 
 <script>
+  // 中文 / English：中文写在网页里，英文在这张表里（键 = 元素上的 data-i18n）。没开脚本时就是中文页。
+  // APK_VERSION：英文里的版本号、大小、日期、文件名（中文的在网页里，两处一起改）
+  var APK = { ver: '6.0.0', file: 'lastlamp-6.0.0.apk', mb: '40', bytes: '41,958,581', date: '8 October 2026' }
+  var EN = {
+    'meta.title': 'The Last Lamp · 森澜岛游戏',
+    'meta.desc': 'The Last Lamp: fly a little biplane, guard the seaside lighthouse from the shadows that come every night, and relight the town one lamp at a time. Get it on Google Play, or download the APK (with an install guide).',
+    'nav.label': 'Page navigation',
+    'nav.game': 'Game',
+    'nav.download': 'Download',
+    'nav.install': 'Install', // 手机上顶栏放得下
+    'nav.privacy': 'Privacy',
+    'hero.logoAlt': 'The Last Lamp',
+    'hero.news': 'The game is now in English! It follows your phone’s language, or switch on the title screen',
+    'hero.h1': 'Fly a little biplane, guard the seaside lighthouse from the shadows that come every night, and relight the town one lamp at a time.',
+    'hero.chip1': 'Android 8.0 or later',
+    'hero.chip2': 'Free · No in-app purchases',
+    'hero.chip3': 'Single-player · Plays offline',
+    'hero.chip4': 'Landscape · English / 中文',
+    'hero.play': 'Get it on Google Play',
+    'hero.apk': 'Download the APK<small>' + APK.ver + ' · ' + APK.mb + ' MB · for phones without Google Play</small>',
+    'hero.hint': 'First time installing an APK? See the <a href="#install">install guide</a>: just four steps.',
+    'game.kicker': 'The game',
+    'game.h2': 'Guard the town’s last lamp',
+    'game.lead': 'Every night, shadows come in from the sea. Only the lighthouse still shines in this little seaside town. Take off in your biplane to guard it, rebuild the wrecked homes and bring the townsfolk back one by one.',
+    'shot.boss': 'Battle: the biplane takes on the Shadow Boss',
+    'f1.h3': 'Fly the plane, guard the lighthouse',
+    'f1.p': 'Joystick in one hand, hold fire with the other. Three waves of shadows, about a minute and a half per battle.',
+    'f1.li1': 'Eight kinds of shadows: ones that gnaw the lighthouse, ones that ram it, ones that wreck houses, a boss that summons more…',
+    'f1.li2': 'Lose all five lighthouse flames and the night is lost; wrecked houses can be repaired back in town',
+    'shot.ahe': 'Town: a rescued resident chatting on the street',
+    'f2.h3': 'Rescue the townsfolk, rebuild the town',
+    'f2.p': 'Residents are trapped in the ruins: fly over and hold the rescue button to bring them out. Help rebuild their homes and watch the soup shop open, the Eternal Lamp shine, the market fill with lanterns and the windmill turn again.',
+    'shot.fog': 'Fog Bridge',
+    'f3.h3': 'Five districts, five stories',
+    'f3.p': 'Lighthouse Bay, Fog Bridge, Market Street, Hillside Homes and Windmill Fields. A hand-painted night harbour, stone bridge, market, hillside and wheat fields, a cast of animal townsfolk, and original music and sound.',
+    'shot.hangar': 'Hangar: upgrade the warhead, engine, shock absorbers and winch',
+    'f4.h3': 'Hangar upgrades · Resident supplies<span class="new">New in 6.0</span>',
+    'f4.p': 'Spend the lamp shards you win to upgrade your warhead, engine, shock absorbers and winch. Once residents reopen their shops, buy supplies before a battle: hot soup shields the lighthouse, an everlasting wick speeds up your guns and a wheat bun makes every bullet hit harder.',
+    'gallery.label': 'More screenshots',
+    'shot.g1': 'Title screen, with the 中文 / English switch at the bottom left',
+    'shot.g2': 'Night held: the battle results',
+    'shot.g3': 'Repairing a house: now and after',
+    'shot.g4': 'Choosing a district to guard',
+    'dl.kicker': 'Download',
+    'dl.h2': 'Two ways to get it',
+    'dl.lead': 'If your phone has Google Play, install from there and get updates automatically. If it can’t open Google Play, download the APK and follow the guide below.',
+    'dl.playP': 'Search “The Last Lamp” on Google Play, or tap the button below. Updates arrive automatically, and moving to a new phone is easy.',
+    'dl.playBtn': 'Get it on Google Play',
+    'dl.apkH': 'APK file',
+    'dl.apkP': 'The same game as on Google Play. Open this page in your phone’s browser to download<span class="desk-only">; on a computer, scan the QR code with your phone</span>.',
+    'dl.meta': '<dt>Version</dt><dd>' + APK.ver + '</dd><dt>Size</dt><dd>' + APK.mb + ' MB (' + APK.bytes + ' bytes)</dd><dt>Updated</dt><dd>' + APK.date + '</dd><dt>Requires</dt><dd>Android 8.0 or later</dd>',
+    'dl.apkBtn': 'Download APK (' + APK.mb + ' MB)',
+    'dl.qrAlt': 'Scan to open the download page on your phone',
+    'dl.qr': 'Scan to open<br>this page on your phone',
+    'dl.copy': 'Copy',
+    'dl.shaLabel': 'SHA-256:',
+    'dl.note': '<b>Works on phones without Google services too.</b> Ads may not load on these phones, so the “watch an ad for extra shards / free repairs” buttons won’t appear; the game itself is not affected at all.',
+    'in.kicker': 'Install guide',
+    'in.h2': 'Installing the APK in four steps',
+    'in.lead': 'Android blocks apps from outside the app store by default, so the first time you need to allow it. The light grey boxes show roughly what you’ll see; the wording varies a little by brand, but it means the same.',
+    's1.h3': 'Download the file',
+    's1.p': 'Open this page in your phone’s browser and tap “Download APK”. If the browser warns that this type of file may be harmful, choose “Download anyway” or “Keep”.',
+    's1.mock': '<div class="t">Keep this file?</div>' + APK.file + ': this type of file can harm your device.<div class="row"><span>Cancel</span><span class="tap">Download anyway</span></div>',
+    's2.h3': 'Open the file',
+    's2.p': 'When it finishes, tap the notification or your browser’s downloads. Can’t find it? Open “Files → Downloads” and tap <b>' + APK.file + '</b>.',
+    's2.mock': '<div class="file"><img src="lastlamp-icon.png" alt=""><div>' + APK.file + '<small>' + APK.mb + ' MB · Download complete</small></div></div>',
+    's3.h3': 'Allow the install',
+    's3.p': 'The first time, Android says it can’t install apps from unknown sources: tap “Settings”, turn on “Allow from this source”, then go back.',
+    's3.mock': '<div class="sw"><span>Allow from this source</span><span class="toggle" aria-hidden="true"></span></div>',
+    's4.h3': 'Install and open',
+    's4.p': 'Tap “Install”, wait a few seconds, then tap “Open”. “The Last Lamp” appears on your home screen; open it from there next time.',
+    's4.mock': '<div class="file"><img src="lastlamp-icon.png" alt=""><div>The Last Lamp<small>Do you want to install this app?</small></div></div><div class="row"><span>Cancel</span><span class="tap">Install</span></div>',
+    'b1': '<b>Huawei · Honor</b>If “Pure mode” blocks it, tap “Install anyway” or “Continue installation”; you can also turn Pure mode off for now in “Settings → System &amp; updates → Pure mode”.',
+    'b2': '<b>Xiaomi · Redmi</b>You may see a security check page: wait a few seconds, then tap “Continue installation”. If “Pure mode” is on, allow this one install when asked.',
+    'b3': '<b>OPPO · OnePlus · realme · vivo</b>You may need to confirm your account password, or wait for a short countdown before “Continue installation” works. It’s a normal system safety prompt; just follow it.',
+    'b4': '<b>Samsung · others</b>If no switch pops up, go to “Settings → Apps → Special access → Install unknown apps” and allow the browser you used to download.',
+    'q1': 'It says “There was a problem parsing the package” or the package is invalid',
+    'a1': 'Usually the download didn’t finish: delete it and download again. It can also mean the phone is older than Android 8.0, which isn’t supported.',
+    'q2': 'It says “App not installed” or that it conflicts with an existing app',
+    'a2': 'The APK here has the same signature as the Google Play version, so either one can update the other. This message usually means a copy of The Last Lamp from somewhere else is installed, or the installed version is newer (you can’t install an older version over a newer one). In the first case, uninstall the old copy first — note that uninstalling clears the game progress on the phone.',
+    'q3': 'How do I update? Will I lose my progress?',
+    'a3': 'When a new version comes out, download the new APK from this page and install it over the old one; your progress stays. Because this APK and the Google Play version share the same signature, you can also switch to updating through Google Play later, with all your progress.',
+    'q4': 'Is the APK safe?',
+    'a4': 'It’s the same package as on Google Play, with the same official signature (exported from the Google Play console), and it’s only offered on this site, so please don’t download it anywhere else. To check the file hasn’t been changed, compute its SHA-256 and compare it with the one under “Download”.',
+    'q5': 'What permissions does the game need?',
+    'a5': 'Only network access and the advertising ID (both for Google ads). It doesn’t read your contacts, photos or location, and needs no account; your progress is stored only on your phone. See the <a href="lastlamp/privacy.html">privacy policy</a>.',
+    'q6': 'Is the game in English? How do I switch?',
+    'a6': 'Yes, since 6.0.1 the game is in both Chinese and English. The first time you open it, it follows your phone’s language: Chinese phones show Chinese, every other language shows English. To switch, tap “中文 / English” at the bottom left of the title screen.',
+    'ab.kicker': 'About us',
+    'ab.bannerAlt': '森澜岛游戏 · Crafting worlds with heart, so joy keeps growing',
+    'ab.p': '森澜岛游戏 is an independent game developer making warm, easygoing games you can enjoy at your own pace, even on your own. Crafting worlds with heart, so joy keeps growing. Questions or ideas? Email us through the “Developer contact” section on our Google Play page.',
+    'ab.play': 'Google Play page',
+    'ab.privacy': 'Privacy policy'
+  }
+
+  var KEY = 'site.lang'
+  var cur = 'zh'
+  var zhTitle = document.title
+  var zhDesc = document.querySelector('meta[name="description"]').getAttribute('content')
+
+  /** 这次用哪种：?lang= → 访客点过的 → 浏览器语言（zh 开头中文，其他英文） */
+  function pick () {
+    var q = new URLSearchParams(location.search).get('lang')
+    if (q === 'en' || q === 'zh') return q
+    try { var s = localStorage.getItem(KEY); if (s === 'en' || s === 'zh') return s } catch (e) { /* 隐私模式读不到，按浏览器语言 */ }
+    var l = (navigator.languages && navigator.languages[0]) || navigator.language || ''
+    return /^zh/i.test(l) ? 'zh' : 'en'
+  }
+
+  /** 整页换成某种语言；第一次换走中文时把网页里原来的中文记在元素上，换回来时用 */
+  function apply (lang) {
+    var en = lang === 'en'
+    cur = en ? 'en' : 'zh'
+    document.documentElement.lang = en ? 'en' : 'zh-CN'
+    document.title = en ? EN['meta.title'] : zhTitle
+    document.querySelector('meta[name="description"]').setAttribute('content', en ? EN['meta.desc'] : zhDesc)
+    document.querySelectorAll('[data-i18n]').forEach(function (n) {
+      var k = n.getAttribute('data-i18n')
+      if (!(k in EN)) return
+      if (n._zh === undefined) n._zh = n.innerHTML
+      n.innerHTML = en ? EN[k] : n._zh
+    })
+    document.querySelectorAll('[data-i18n-alt]').forEach(function (n) {
+      if (n._zhAlt === undefined) n._zhAlt = n.alt
+      n.alt = en ? EN[n.getAttribute('data-i18n-alt')] : n._zhAlt
+    })
+    document.querySelectorAll('[data-i18n-label]').forEach(function (n) {
+      if (n._zhLabel === undefined) n._zhLabel = n.getAttribute('aria-label')
+      n.setAttribute('aria-label', en ? EN[n.getAttribute('data-i18n-label')] : n._zhLabel)
+    })
+    document.querySelectorAll('[data-en-src]').forEach(function (n) {
+      if (n._zhSrc === undefined) n._zhSrc = n.getAttribute('src')
+      n.setAttribute('src', en ? n.getAttribute('data-en-src') : n._zhSrc)
+    })
+    document.querySelectorAll('.lang-switch button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === cur))
+    })
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var lang = b.getAttribute('data-lang')
+      try { localStorage.setItem(KEY, lang) } catch (e) { /* 记不住就只换这一次 */ }
+      apply(lang)
+    })
+  })
+  if (pick() === 'en') apply('en')
+
   // 复制 SHA-256（浏览器不让写剪贴板时，选中文字让玩家自己复制）
   document.getElementById('copy-sha').addEventListener('click', function () {
     var code = document.getElementById('sha')
     var btn = this
-    var done = function () { btn.textContent = '已复制'; setTimeout(function () { btn.textContent = '复制' }, 1600) }
+    var label = function () { return cur === 'en' ? 'Copy' : '复制' }
+    var done = function () { btn.textContent = cur === 'en' ? 'Copied' : '已复制'; setTimeout(function () { btn.textContent = label() }, 1600) }
     var select = function () { var r = document.createRange(); r.selectNodeContents(code); var s = getSelection(); s.removeAllRanges(); s.addRange(r) }
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(code.textContent).then(done, select)
     else select()
