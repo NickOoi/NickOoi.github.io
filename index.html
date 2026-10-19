@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0a1030">
 <meta property="og:title" content="最后一盏灯 · The Last Lamp">
 <meta property="og:description" content="开着小飞机守住海边灯塔，把镇上的灯一盏盏点回来。Android 单机游戏，中文 / English，Google Play 或 APK 下载。">
-<meta property="og:image" content="https://nickooi.github.io/assets/hero-sm.jpg">
+<meta property="og:image" content="https://nickooi.github.io/assets/og.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="assets/brand/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
@@ -82,7 +82,7 @@
   .hero { position: relative; min-height: min(86vh, 760px); display: flex; align-items: flex-end; overflow: hidden; background: #070b22 url("assets/hero.jpg") center 40% / cover no-repeat; }
   .hero::before { content: ""; position: absolute; inset: 0; background:
     linear-gradient(180deg, rgba(10, 16, 48, 0.25) 0%, rgba(10, 16, 48, 0) 30%, rgba(10, 16, 48, 0.55) 62%, var(--ground) 100%),
-    linear-gradient(90deg, rgba(10, 16, 48, 0.9) 0%, rgba(10, 16, 48, 0.62) 38%, rgba(10, 16, 48, 0.08) 68%, rgba(10, 16, 48, 0) 100%); }
+    linear-gradient(90deg, rgba(10, 16, 48, 0.78) 0%, rgba(10, 16, 48, 0.34) 34%, rgba(10, 16, 48, 0) 60%, rgba(10, 16, 48, 0) 100%); }
   .hero .wrap { position: relative; width: 100%; padding-block: 56px 64px; }
   .hero .logo { width: min(440px, 80vw); filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.55)); margin-left: -8px; }
   .news { display: inline-flex; align-items: center; gap: 10px; margin: 16px 0 0; padding: 6px 14px 6px 6px; border-radius: 999px; background: rgba(10, 16, 48, 0.65); border: 1px solid rgba(79, 227, 193, 0.45); font-size: 14px; color: var(--ink); }
@@ -203,7 +203,7 @@
     .nav nav a { padding: 6px 7px; font-size: 14px; }
     .lang-switch button { padding: 6px 8px; font-size: 13px; }
     .brand span { display: none; }
-    .hero { min-height: 640px; background-image: url("assets/hero-sm.jpg"); background-position: 55% 30%; }
+    .hero { min-height: 640px; background-image: url("assets/hero-sm.jpg"); background-position: 50% 30%; }
     .hero .wrap { padding-block: 40px 44px; }
     .btn { width: 100%; justify-content: center; }
     .steps { grid-template-columns: 1fr; }
@@ -237,7 +237,7 @@
   <div class="hero">
     <div class="wrap">
       <img class="logo" src="assets/logo.png" alt="最后一盏灯" data-i18n-alt="hero.logoAlt" width="700" height="170">
-      <p class="news"><b data-i18n="hero.newsTag">新版本</b><span data-i18n="hero.news">游戏现已支持英文：跟着手机语言自动切换，开始画面也能切换</span></p>
+      <p class="news"><b data-i18n="hero.newsTag">新版本</b><span data-i18n="hero.news">6.3「影潮来袭」：鬼影会不定时围攻亮灯的街；四款大招、暴击和格挡；万圣夜 10.26 开启</span></p>
       <h1 data-i18n="hero.h1">开着小飞机守住海边灯塔，打退每晚从海上来的影怪，把镇上的灯一盏盏点回来。</h1>
       <ul class="chips">
         <li data-i18n="hero.chip1">Android 8.0 及以上</li>
@@ -268,6 +268,28 @@
 
       <div class="features">
         <article class="feature">
+          <div class="shot"><img src="assets/shots/raid.jpg" data-en-src="assets/shots/en/raid.jpg" alt="影潮来袭：三只狂暴的首领一起来，小飞机放出灯火齐射" data-i18n-alt="shot.raid" loading="lazy" width="1280" height="720"></div>
+          <div>
+            <h3 data-i18n="f5.h3">影潮来袭<span class="new">6.3 新</span></h3>
+            <p data-i18n="f5.p">只要街上还亮着灯，鬼影就会不定时来围攻：几只首领一起来、一出场就狂暴，各种异常状态一起放。</p>
+            <ul>
+              <li data-i18n="f5.li1">守住拿 3 倍碎片，还有机会掉大招残片</li>
+              <li data-i18n="f5.li2">守不住，这条街就灭灯；也可以花钻石开保护结界挡一次</li>
+            </ul>
+          </div>
+        </article>
+        <article class="feature">
+          <div class="shot"><img src="assets/shots/ult.jpg" data-en-src="assets/shots/en/ult.jpg" alt="大招：光束横扫，影怪头上飘伤害数字" data-i18n-alt="shot.ult" loading="lazy" width="1280" height="720"></div>
+          <div>
+            <h3 data-i18n="f6.h3">四款大招 · 暴击格挡<span class="new">6.3 新</span></h3>
+            <p data-i18n="f6.p">灯火齐射、光束横扫、震退冲击波、流星灯雨，每局带一款，冷却好了咏唱放出去；打败周末副本「影巢」的首领掉残片，用来解锁和升级。</p>
+            <ul>
+              <li data-i18n="f6.li1">打中影怪头上飘伤害数字，还会暴击</li>
+              <li data-i18n="f6.li2">精英会闪避（MISS）、会格挡，首领会放黑暗、迟缓、卡弹、灯火摇曳</li>
+            </ul>
+          </div>
+        </article>
+        <article class="feature">
           <div class="shot"><img src="assets/shots/02-boss.jpg" data-en-src="assets/shots/en/boss.jpg" alt="战斗：小飞机迎战影怪首领" data-i18n-alt="shot.boss" loading="lazy" width="1280" height="720"></div>
           <div>
             <h3 data-i18n="f1.h3">开飞机，守灯塔</h3>
@@ -295,17 +317,17 @@
         <article class="feature">
           <div class="shot"><img src="assets/shots/hangar.jpg" data-en-src="assets/shots/en/hangar.jpg" alt="机库：升级弹头、引擎、减震、绞盘" data-i18n-alt="shot.hangar" loading="lazy" width="1280" height="720"></div>
           <div>
-            <h3 data-i18n="f4.h3">机库升级 · 居民补给<span class="new">6.0 新</span></h3>
+            <h3 data-i18n="f4.h3">机库升级 · 居民补给</h3>
             <p data-i18n="f4.p">用守夜赢来的灯火碎片，升级弹头、引擎、减震和绞盘；居民的店开张以后，出战前还能买补给：热汤护住灯塔、长明灯芯加快射速、麦饼让子弹更有力。</p>
           </div>
         </article>
       </div>
 
       <div class="gallery" aria-label="更多游戏截图" data-i18n-label="gallery.label">
-        <div class="shot"><img src="assets/shots/shield.jpg" data-en-src="assets/shots/en/title.jpg" alt="带着热汤护罩出战" data-i18n-alt="shot.g1" loading="lazy" width="1280" height="720"></div>
-        <div class="shot"><img src="assets/shots/04-harbor.jpg" data-en-src="assets/shots/en/result.jpg" alt="灯塔湾的战斗" data-i18n-alt="shot.g2" loading="lazy" width="1280" height="720"></div>
-        <div class="shot"><img src="assets/shots/05-repair.jpg" data-en-src="assets/shots/en/repair.jpg" alt="修房子：现在和修好后" data-i18n-alt="shot.g3" loading="lazy" width="1280" height="720"></div>
-        <div class="shot"><img src="assets/shots/supplies.jpg" data-en-src="assets/shots/en/picker.jpg" alt="出战补给" data-i18n-alt="shot.g4" loading="lazy" width="1280" height="720"></div>
+        <div class="shot"><img src="assets/shots/crit.jpg" data-en-src="assets/shots/en/crit.jpg" alt="暴击、格挡和 MISS" data-i18n-alt="shot.g1" loading="lazy" width="1280" height="720"></div>
+        <div class="shot"><img src="assets/shots/raidalert.jpg" data-en-src="assets/shots/en/raidalert.jpg" alt="影潮来袭：迎战或开保护结界" data-i18n-alt="shot.g2" loading="lazy" width="1280" height="720"></div>
+        <div class="shot"><img src="assets/shots/pickraid.jpg" data-en-src="assets/shots/en/pickraid.jpg" alt="选关：影潮卡片和各街区" data-i18n-alt="shot.g3" loading="lazy" width="1280" height="720"></div>
+        <div class="shot"><img src="assets/shots/achieve.jpg" data-en-src="assets/shots/en/achieve.jpg" alt="成就和称号" data-i18n-alt="shot.g4" loading="lazy" width="1280" height="720"></div>
       </div>
     </div>
   </section>
@@ -452,7 +474,7 @@
     'nav.privacy': 'Privacy',
     'hero.logoAlt': 'The Last Lamp',
     'hero.newsTag': 'NEW',
-    'hero.news': 'The game is now in English! It follows your phone’s language, or switch on the title screen',
+    'hero.news': '6.3 Shadow Raids: enraged bosses besiege your lit streets; 4 ultimates, crits and blocks; Halloween Night from Oct 26',
     'hero.h1': 'Fly a little biplane, guard the seaside lighthouse from the shadows that come every night, and relight the town one lamp at a time.',
     'hero.chip1': 'Android 8.0 or later',
     'hero.chip2': 'Free · Optional in-app purchases',
@@ -464,6 +486,16 @@
     'game.kicker': 'The game',
     'game.h2': 'Guard the town’s last lamp',
     'game.lead': 'Every night, shadows come in from the sea. Only the lighthouse still shines in this little seaside town. Take off in your biplane to guard it, rebuild the wrecked homes and bring the townsfolk back one by one.',
+    'shot.raid': 'Shadow Raid: three enraged bosses at once, and the biplane fires a Lantern Volley',
+    'f5.h3': 'Shadow Raids<span class="new">New in 6.3</span>',
+    'f5.p': 'As long as a street’s lights are on, shadows may besiege it at any time: several bosses at once, enraged from the start and casting every curse.',
+    'f5.li1': 'Hold it for triple shards and a chance of ultimate shards',
+    'f5.li2': 'Fail and the street’s lights go out, unless you raise a Diamond barrier',
+    'shot.ult': 'Ultimate: Beam Sweep, with damage numbers over the shadows',
+    'f6.h3': '4 ultimates · Crits and blocks<span class="new">New in 6.3</span>',
+    'f6.p': 'Lantern Volley, Beam Sweep, Shock Nova and Meteor Rain. Bring one per battle and cast it when it’s off cooldown; unlock and upgrade them with shards from the bosses of the weekend dungeon, Shadow Nest.',
+    'f6.li1': 'Damage numbers float over the shadows, with critical hits',
+    'f6.li2': 'Elites dodge (MISS) and block; bosses curse you with Darkness, Snare, Jam and Flicker',
     'shot.boss': 'Battle: the biplane takes on the Shadow Boss',
     'f1.h3': 'Fly the plane, guard the lighthouse',
     'f1.p': 'Joystick in one hand, hold fire with the other. Three waves of shadows, about a minute and a half per battle.',
@@ -476,13 +508,13 @@
     'f3.h3': 'Five districts, five stories',
     'f3.p': 'Lighthouse Bay, Fog Bridge, Market Street, Hillside Homes and Windmill Fields. A hand-painted night harbour, stone bridge, market, hillside and wheat fields, a cast of animal townsfolk, and original music and sound.',
     'shot.hangar': 'Hangar: upgrade the warhead, engine, shock absorbers and winch',
-    'f4.h3': 'Hangar upgrades · Resident supplies<span class="new">New in 6.0</span>',
+    'f4.h3': 'Hangar upgrades · Resident supplies',
     'f4.p': 'Spend the lamp shards you win to upgrade your warhead, engine, shock absorbers and winch. Once residents reopen their shops, buy supplies before a battle: hot soup shields the lighthouse, an everlasting wick speeds up your guns and a wheat bun makes every bullet hit harder.',
     'gallery.label': 'More screenshots',
-    'shot.g1': 'Title screen, with the 中文 / English switch at the bottom left',
-    'shot.g2': 'Night held: the battle results',
-    'shot.g3': 'Repairing a house: now and after',
-    'shot.g4': 'Choosing a district to guard',
+    'shot.g1': 'Critical hits, blocks and MISS',
+    'shot.g2': 'Shadow Raid: defend, or raise a barrier',
+    'shot.g3': 'Choosing a district, with the raid card on top',
+    'shot.g4': 'Achievements and titles',
     'dl.kicker': 'Download',
     'dl.h2': 'Two ways to get it',
     'dl.lead': 'If your phone has Google Play, install from there and get updates automatically. If it can’t open Google Play, download the APK and follow the guide below.',
