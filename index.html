@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>最后一盏灯 · 森澜岛游戏</title>
-<meta name="description" content="《最后一盏灯》6.4「潮汐港」已上线——开着小飞机守住海边灯塔，打退每晚从海上来的影怪，把镇上的灯一盏盏点回来。Google Play 下载，或直接下载 APK 安装包（附安装教程）。">
+<meta name="description" content="《最后一盏灯》6.5「动起来打」已上线——开着小飞机守住海边灯塔，打退每晚从天上、海里扑来的影怪：连击越烧越旺、捡火种换子弹、机身耐久、九种新影怪。Google Play 免费下载，也提供 APK。">
 <meta name="theme-color" content="#0a1030">
 <meta property="og:title" content="最后一盏灯 · The Last Lamp">
-<meta property="og:description" content="6.4「潮汐港」已上线：第二座小镇、天气异常、灾害级周末副本。开着小飞机守住海边灯塔，把镇上的灯一盏盏点回来。Android 单机游戏，中文 / English，Google Play 或 APK 下载。">
+<meta property="og:description" content="6.5「动起来打」已上线：影怪从天上海里扑来、连击变旺、火种换弹、机身耐久、九种新影怪。开着小飞机守住海边灯塔。">
 <meta property="og:image" content="https://nickooi.github.io/assets/og.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="assets/brand/favicon-64.png">
@@ -78,7 +78,7 @@
   .lang-switch button[aria-pressed="true"] { color: var(--lamp-ink); background: linear-gradient(180deg, #ffe09a, var(--lamp-2)); font-weight: 700; }
   .lang-switch button:focus-visible { outline: 2px solid var(--lamp); outline-offset: 1px; }
 
-  /* 首屏（6.4 起）：上面一整条主视觉（画师 v47：雷暴夜里小飞机迎战潮汐首领），雨丝斜着落、闪电一闪一闪、镜头慢慢推近；
+  /* 首屏（6.5 起换成画师 v55 的手绘水彩：小飞机斜着冲、连击火焰、火种，影怪从天上海里扑来；用户要“不要 AI 感觉”，所以不再叠雨丝 / 闪电，只留慢慢推近的镜头）；6.4 的雨 / 闪电样式留着没用；
      标志压在左上角的夜空上，“6.4 已上线”横幅、文字和按钮在下面、压住画面底边一点——不挡飞机和首领。
      画面换图：assets/hero.jpg（横版，电脑）、assets/hero-sm.jpg（竖版裁切，手机）；闪电的位置在 .flash 的径向渐变里（对准画里那道闪电） */
   .hero { position: relative; overflow: hidden; background: var(--ground); }
@@ -259,7 +259,7 @@
 
 <main id="top">
   <div class="hero">
-    <div class="hero-art" aria-hidden="true"><div class="bg"></div><i class="rain"></i><i class="flash"></i></div>
+    <div class="hero-art" aria-hidden="true"><div class="bg"></div></div>
     <div class="hero-top">
       <div class="wrap">
         <img class="logo" src="assets/logo.png" alt="最后一盏灯" data-i18n-alt="hero.logoAlt" width="700" height="170">
@@ -267,7 +267,7 @@
     </div>
     <div class="hero-body">
     <div class="wrap">
-      <p class="news"><b data-i18n="hero.newsTag">6.4 已上线</b><span data-i18n="hero.news">「潮汐港」开放：第二座小镇、天气异常、灾害级周末副本，大招冷却减半</span></p>
+      <p class="news"><b data-i18n="hero.newsTag">6.5 已上线</b><span data-i18n="hero.news">「动起来打」：影怪从天上、海里扑来，连击越烧越旺，捡火种换子弹，机身有耐久，九种新影怪</span></p>
       <h1 data-i18n="hero.h1">开着小飞机守住海边灯塔，打退每晚从海上来的影怪，把镇上的灯一盏盏点回来。</h1>
       <ul class="chips">
         <li data-i18n="hero.chip1">Android 8.0 及以上</li>
@@ -283,7 +283,7 @@
         <!-- APK_VERSION：版本号、大小 -->
         <a class="btn btn-line" href="#download">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1ZM5 19h14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2Z"/></svg>
-          <span data-i18n="hero.apk">下载 APK 安装包<small>6.4.0 · 77 MB · 上不了 Google Play 的手机用</small></span>
+          <span data-i18n="hero.apk">下载 APK 安装包<small>6.5.0 · 79 MB · 上不了 Google Play 的手机用</small></span>
         </a>
       </div>
       <p class="hint" data-i18n="hero.hint">第一次装 APK？看 <a href="#install">安装教程</a>，四步就好。</p>
@@ -299,9 +299,42 @@
 
       <div class="features">
         <article class="feature">
+          <div class="shot"><img src="assets/shots/embers.jpg" data-en-src="assets/shots/en/embers.jpg" alt="捡火种换子弹：画面上飘着四种火种" data-i18n-alt="shot.embers" loading="lazy" width="1280" height="720"></div>
+          <div>
+            <h3 data-i18n="f10.h3">动起来打 · 连击 · 火种<span class="new">6.5 新</span></h3>
+            <p data-i18n="f10.p">影怪不只从右边来了：天上扑下来、海里跃出来，原地待太久还会被伏影偷袭，画面边上的箭头告诉你从哪来。一直打得中，子弹越烧越旺（金焰、蓝焰、炽白焰）；打散影怪掉下的火种，飞过去碰一下换 8 秒特殊子弹。</p>
+            <ul>
+              <li data-i18n="f10.li1">四种火种：打水漂、回旋灯、连锁光、三叉火</li>
+              <li data-i18n="f10.li2">帮手：灯塔光束震开影怪、亮着的路灯电走拆房子的，连输两局夜色会变浅</li>
+            </ul>
+          </div>
+        </article>
+        <article class="feature">
+          <div class="shot"><img src="assets/shots/fogwall.jpg" data-en-src="assets/shots/en/fogwall.jpg" alt="织雾影拉出一道雾墙，子弹打进去会被吞掉" data-i18n-alt="shot.fogwall" loading="lazy" width="1280" height="720"></div>
+          <div>
+            <h3 data-i18n="f11.h3">九种新影怪<span class="new">6.5 新</span></h3>
+            <p data-i18n="f11.p">第 8 夜起偶尔露面，第 15 夜起成群：捣蛋影和调皮影缠着飞机捣乱，镜盾影用镜子把子弹弹开，幻影分身真假难辨，吞火影抢你的火种，灭火影死了留一团冷雾，偷灯影偷走灯火往右逃，织雾影拉出吞子弹的雾墙，影巢落在房顶上一直孵小影子。</p>
+            <ul>
+              <li data-i18n="f11.li1">每种都有破法：等镜盾影转身、认眼睛亮的真身、追回偷灯影的灯火</li>
+              <li data-i18n="f11.li2">周末副本每个主题固定搭配两种</li>
+            </ul>
+          </div>
+        </article>
+        <article class="feature">
+          <div class="shot"><img src="assets/shots/foes.jpg" data-en-src="assets/shots/en/foes.jpg" alt="新影怪：偷灯影抱着灯火逃、吞火影张嘴扑火种" data-i18n-alt="shot.foes" loading="lazy" width="1280" height="720"></div>
+          <div>
+            <h3 data-i18n="f12.h3">机身耐久 · 汽油<span class="new">6.5 新</span></h3>
+            <p data-i18n="f12.p">飞机挨打会掉机身耐久，打光了灯塔掉一格灯火：精英会喷影弹、首领会砸一大片，看到预警就躲。商城有汽油，耐久低于你设的那一档自动补上；第一桶送你。</p>
+            <ul>
+              <li data-i18n="f12.li1">结算多了「本局表现」：连击、火种、躲过几发影弹</li>
+              <li data-i18n="f12.li2">扫荡、离线收益、提醒通知，还有「最高连击」排行榜</li>
+            </ul>
+          </div>
+        </article>
+        <article class="feature">
           <div class="shot"><img src="assets/shots/tide-battle.jpg" data-en-src="assets/shots/en/tide-battle.jpg" alt="潮汐港：小飞机迎战潮汐首领" data-i18n-alt="shot.tide" loading="lazy" width="1280" height="720"></div>
           <div>
-            <h3 data-i18n="f7.h3">潮汐港<span class="new">6.4 新</span></h3>
+            <h3 data-i18n="f7.h3">潮汐港</h3>
             <p data-i18n="f7.p">灯塔湾对岸的第二座小镇：渔港码头、盐田、船坞、海蚀洞，四位新居民等你救回。潮水会涨会退：涨潮时贴着水面飞会被浪拖慢，退潮时礁石上可能困着村民。</p>
             <ul>
               <li data-i18n="f7.li1">新影怪：浪涌影从海里扑上来、结晶影长出盐壳、锚链影甩链把你往下拽</li>
@@ -312,7 +345,7 @@
         <article class="feature">
           <div class="shot"><img src="assets/shots/weather.jpg" data-en-src="assets/shots/en/weather.jpg" alt="雷暴：落雷前先出预警圈" data-i18n-alt="shot.weather" loading="lazy" width="1280" height="720"></div>
           <div>
-            <h3 data-i18n="f8.h3">天气异常 · 高难度<span class="new">6.4 新</span></h3>
+            <h3 data-i18n="f8.h3">天气异常 · 高难度</h3>
             <p data-i18n="f8.p">第 4 夜起随时会变天：暴雨让子弹射程变短，雷暴落雷要躲开预警圈（也能把影怪引进去劈），冰雹砸中会变慢，寒潮让影怪滑得更快。</p>
             <ul>
               <li data-i18n="f8.li1">第 15 夜起高难度：乱流让方向全反，还有四种让你开不了火的「沉默」</li>
@@ -323,7 +356,7 @@
         <article class="feature">
           <div class="shot"><img src="assets/shots/dungeon.jpg" data-en-src="assets/shots/en/dungeon.jpg" alt="选关：灾害级周末副本" data-i18n-alt="shot.dungeon" loading="lazy" width="1280" height="720"></div>
           <div>
-            <h3 data-i18n="f9.h3">灾害级周末副本<span class="new">6.4 新</span></h3>
+            <h3 data-i18n="f9.h3">灾害级周末副本</h3>
             <p data-i18n="f9.p">每个周末开放灾害级副本，七个主题每周轮换：首领成群、机关遍地，整局下着主题天气。</p>
             <ul>
               <li data-i18n="f9.li1">守住拿永久加成的灯塔徽章，七枚叠加、最高 20 级</li>
@@ -414,18 +447,18 @@
           <p data-i18n="dl.apkP">和 Google Play 上是同一个游戏。用手机浏览器打开本页下载<span class="desk-only">；在电脑上看的话，用手机扫右边的二维码</span>。</p>
           <!-- APK_VERSION：版本号、大小、日期、最低系统 -->
           <dl class="meta" data-i18n="dl.meta">
-            <dt>版本</dt><dd>6.4.0</dd>
-            <dt>大小</dt><dd>77 MB（80,270,977 字节）</dd>
-            <dt>更新日期</dt><dd>2026 年 10 月 25 日</dd>
+            <dt>版本</dt><dd>6.5.0</dd>
+            <dt>大小</dt><dd>79 MB（82,658,970 字节）</dd>
+            <dt>更新日期</dt><dd>2026 年 11 月 1 日</dd>
             <dt>系统要求</dt><dd>Android 8.0 及以上</dd>
           </dl>
           <div class="apk-row">
             <!-- APK_VERSION：下载链接 -->
-            <a class="btn btn-gold" href="download/lastlamp-6.4.0.apk" download data-i18n="dl.apkBtn">下载 APK（77 MB）</a>
+            <a class="btn btn-gold" href="download/lastlamp-6.5.0.apk" download data-i18n="dl.apkBtn">下载 APK（79 MB）</a>
             <div class="qr"><img src="assets/qr-download.png" alt="扫码在手机上打开下载页" data-i18n-alt="dl.qrAlt" width="96" height="96"><span data-i18n="dl.qr">手机扫码<br>打开下载页</span></div>
           </div>
           <!-- APK_VERSION：SHA-256 -->
-          <div class="hash"><span data-i18n="dl.shaLabel">SHA-256：</span><code id="sha">b34eae5dcaa6237a94038d38b85132a4896e00d9954efb199502856ecc61788b</code><button type="button" id="copy-sha" data-i18n="dl.copy">复制</button></div>
+          <div class="hash"><span data-i18n="dl.shaLabel">SHA-256：</span><code id="sha">12aa945c8b1b304c8ccf63cbbc19f3d74f412545356e4dce35d308eda6d231e1</code><button type="button" id="copy-sha" data-i18n="dl.copy">复制</button></div>
         </div>
       </div>
 
@@ -443,11 +476,11 @@
         <li class="step">
           <h3 data-i18n="s1.h3">下载安装包</h3>
           <p data-i18n="s1.p">用手机浏览器打开本页，点“下载 APK”。如果浏览器提醒“这类文件可能有害”，选“仍然下载”或“保留”。</p>
-          <div class="mock" data-i18n="s1.mock"><div class="t">要保留此文件吗？</div>lastlamp-6.4.0.apk 这类文件可能会损害你的设备。<div class="row"><span>取消</span><span class="tap">仍然下载</span></div></div>
+          <div class="mock" data-i18n="s1.mock"><div class="t">要保留此文件吗？</div>lastlamp-6.5.0.apk 这类文件可能会损害你的设备。<div class="row"><span>取消</span><span class="tap">仍然下载</span></div></div>
         </li>
         <li class="step">
           <h3 data-i18n="s2.h3">打开安装包</h3>
-          <p data-i18n="s2.p">下载完成后点通知栏或浏览器里的下载记录；找不到就打开“文件管理 → 下载（Download）”，点 <b>lastlamp-6.4.0.apk</b>。</p>
+          <p data-i18n="s2.p">下载完成后点通知栏或浏览器里的下载记录；找不到就打开“文件管理 → 下载（Download）”，点 <b>lastlamp-6.5.0.apk</b>。</p>
           <div class="mock" data-i18n="s2.mock"><div class="file"><img src="lastlamp-icon.png" alt=""><div>lastlamp-6.4.0.apk<small>77 MB · 下载完成</small></div></div></div>
         </li>
         <li class="step">
@@ -527,18 +560,18 @@
 <script>
   // 中文 / English：中文写在网页里，英文在这张表里（键 = 元素上的 data-i18n）。没开脚本时就是中文页。
   // APK_VERSION：英文里的版本号、大小、日期、文件名（中文的在网页里，两处一起改）
-  var APK = { ver: '6.4.0', file: 'lastlamp-6.4.0.apk', mb: '77', bytes: '80,270,977', date: '25 October 2026' }
+  var APK = { ver: '6.5.0', file: 'lastlamp-6.5.0.apk', mb: '79', bytes: '82,658,970', date: '1 November 2026' }
   var EN = {
     'meta.title': 'The Last Lamp · 森澜岛游戏',
-    'meta.desc': 'The Last Lamp 6.4 Tide Harbor is out. Fly a little biplane, guard the seaside lighthouse from the shadows that come every night, and relight the town one lamp at a time. Get it on Google Play, or download the APK (with an install guide).',
+    'meta.desc': 'The Last Lamp 6.5 Keep Moving is out. Fly a little biplane and guard the seaside lighthouse from shadows that now dive from the sky and leap from the sea: combo blaze, embers, hull, nine new shadows. Free on Google Play, APK available.',
     'nav.label': 'Page navigation',
     'nav.game': 'Game',
     'nav.download': 'Download',
     'nav.install': 'Install', // 手机上顶栏放得下
     'nav.privacy': 'Privacy',
     'hero.logoAlt': 'The Last Lamp',
-    'hero.newsTag': '6.4 OUT NOW',
-    'hero.news': 'Tide Harbor is open: a second town, wild weather, the weekend Calamity Dungeon, and ultimates with half the cooldown',
+    'hero.newsTag': '6.5 OUT NOW',
+    'hero.news': 'Keep moving: shadows dive from the sky and leap from the sea, combos burn hotter, embers swap your shots, your hull wears down, and nine new shadows arrive',
     'hero.h1': 'Fly a little biplane, guard the seaside lighthouse from the shadows that come every night, and relight the town one lamp at a time.',
     'hero.chip1': 'Android 8.0 or later',
     'hero.chip2': 'Free · Optional in-app purchases',
@@ -550,18 +583,33 @@
     'game.kicker': 'The game',
     'game.h2': 'Guard the town’s last lamp',
     'game.lead': 'Every night, shadows come in from the sea. Only the lighthouse still shines in this little seaside town. Take off in your biplane to guard it, rebuild the wrecked homes and bring the townsfolk back one by one.',
+    'shot.embers': 'Embers: four kinds drifting over the battle',
+    'f10.h3': 'Keep moving · Combos · Embers<span class="new">New in 6.5</span>',
+    'f10.p': 'Shadows no longer come only from the right: they dive from the sky and leap from the sea, and staying put too long gets you ambushed; arrows at the screen edge show where they come from. Keep hitting and your shots burn hotter (gold, blue, white-hot); fly through a fallen ember for 8 seconds of special fire.',
+    'f10.li1': 'Four embers: Skipping Stone, Boomerang Lamp, Chain Light, Trident Fire',
+    'f10.li2': 'Helpers: the lighthouse pulse pushes shadows back, lit streetlamps zap house-wreckers, and the night gets lighter after two losses',
+    'shot.foes': 'New shadows: the Lamp Thief flees with a flame, the Ember Eater lunges at an ember',
+    'f11.h3': 'Nine new shadows<span class="new">New in 6.5</span>',
+    'f11.p': 'A taste from night 8, in force from night 15: Prank and Imp Shades pester your plane, the Mirror Shade deflects shots, the Decoy splits into fakes, the Ember Eater steals your embers, the Douser leaves a cold mist, the Lamp Thief runs off with a flame, the Fog Weaver spins a bullet-eating wall and the Nest hatches shades on a rooftop.',
+    'f11.li1': 'Every one has a counter: wait for the mirror to turn, spot the bright-eyed real one, chase the thief down',
+    'f11.li2': 'Each weekend dungeon theme pairs two of them',
+    'shot.fogwall': 'The Fog Weaver raises a wall that swallows bullets',
+    'f12.h3': 'Hull · Fuel<span class="new">New in 6.5</span>',
+    'f12.p': 'Getting hit wears down your hull, and when it runs out the lighthouse loses a flame: elites spit shadow shots and bosses slam a wide area, so dodge the warnings. Fuel in the shop refills it automatically below the level you set; the first can is free.',
+    'f12.li1': 'A “This battle” row on the results: combo, embers, spit dodged',
+    'f12.li2': 'Sweep, idle rewards, reminders and a Best Combo leaderboard',
     'shot.tide': 'Tide Harbor: the biplane takes on the Tide Boss',
-    'f7.h3': 'Tide Harbor<span class="new">New in 6.4</span>',
+    'f7.h3': 'Tide Harbor',
     'f7.p': 'Across the bay lies a second town: Fishing Wharf, Salt Flats, Shipyard and Sea Caves, with four new villagers to rescue. The tide rises and falls: skim the water at high tide and the waves slow you down; at low tide, villagers may be stranded on the rocks.',
     'f7.li1': 'New shadows: Surge Shades leap out of the sea, Salt Shades grow crusts and Anchor Shades drag you down on a chain',
     'f7.li2': 'The Tide Boss grows at high tide and bares its glowing core at low tide',
     'shot.weather': 'Storm: lightning strikes where the warning rings appear',
-    'f8.h3': 'Wild weather · Hard mode<span class="new">New in 6.4</span>',
+    'f8.h3': 'Wild weather · Hard mode',
     'f8.p': 'From night 4 the sky can turn on you: downpours cut your range, storms drop lightning (dodge the warning rings, or lure shadows into them), hail slows you down and cold snaps send shadows sliding faster.',
     'f8.li1': 'From night 15: turbulence reverses your controls, and four kinds of Silence stop you firing',
     'f8.li2': 'Train resistances in the hangar and bring weather potions',
     'shot.dungeon': 'Choosing the weekend Calamity Dungeon',
-    'f9.h3': 'Weekend Calamity Dungeon<span class="new">New in 6.4</span>',
+    'f9.h3': 'Weekend Calamity Dungeon',
     'f9.p': 'Every weekend a calamity-level dungeon opens, with one of seven themes each week: swarms of bosses, traps everywhere and the theme’s weather all battle long.',
     'f9.li1': 'Hold it to earn lighthouse badges with permanent bonuses: seven of them, up to level 20',
     'f9.li2': 'More elite shades in later waves and later nights',
