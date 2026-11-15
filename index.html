@@ -119,6 +119,10 @@
   .btn small { display: block; font-weight: 400; font-size: 12px; opacity: 0.8; margin-top: 2px; }
   .hint { margin: 12px 0 0; font-size: 14px; color: var(--dim); }
   .hint a { color: var(--lamp); }
+  /* 插画 / 实机截图说明（合规 M-6 / E-5：实机图和宣传插画要分清楚）；字小、颜色淡，不抢正文 */
+  .art-note, .shots-note { margin: 6px 0 0; font-size: 12px; color: var(--faint); }
+  .shots-note { margin: -24px 0 28px; font-size: 13px; }
+  .feature .odds-link { margin: 10px 0 0; font-size: 14px; }
 
   /* 通用小节 */
   section { padding-block: 72px; }
@@ -274,11 +278,12 @@
     </div>
     <div class="hero-body">
     <div class="wrap">
-      <p class="news"><b data-i18n="hero.newsTag">6.7 已上线</b><span data-i18n="hero.news">华丽祈愿、灯塔基金、灯火月卡</span></p>
+      <!-- 6.7 横幅和属性标签：小规合规复查 11-15 M-1 / M-2（英文 E-1 / E-2）原文照贴；写到祈愿必须同时写「随机」和「在哪看概率」，不写概率数字和抽数，改字先找小规 -->
+      <p class="news"><b data-i18n="hero.newsTag">6.7 已上线</b><span data-i18n="hero.news">「华丽祈愿」：用灯愿券随机抽取华丽飞机皮肤、专属拖尾、专属环绕和称号，券不够可以勾选用钻石补足。每一档的机会和保底规则都写在祈愿页「概率公示」里，抽之前就能看到。</span></p>
       <h1 data-i18n="hero.h1">开着小飞机守住海边灯塔，打退每晚从海上来的影怪，把镇上的灯一盏盏点回来。</h1>
       <ul class="chips">
         <li data-i18n="hero.chip1">Android 8.0 及以上</li>
-        <li data-i18n="hero.chip2">免费下载 · 可选内购</li>
+        <li data-i18n="hero.chip2">免费下载 · 含广告 · 可选内购（含随机道具）</li>
         <li data-i18n="hero.chip3">单机 · 不联网也能玩</li>
         <li data-i18n="hero.chip4">横屏 · 中文 / English</li>
       </ul>
@@ -294,6 +299,8 @@
         </a>
       </div>
       <p class="hint" data-i18n="hero.hint">第一次装 APK？看 <a href="#install">安装教程</a>，四步就好。</p>
+      <!-- 首屏背景 assets/hero.jpg 是 v59 宣传插画（不是实机画面），合规 M-6 要求标出来 -->
+      <p class="art-note" data-i18n="hero.artNote">首屏背景为宣传插画</p>
     </div>
     </div>
   </div>
@@ -303,6 +310,8 @@
       <p class="kicker" data-i18n="game.kicker">游戏</p>
       <h2 data-i18n="game.h2">守住小镇的最后一盏灯</h2>
       <p class="lead" data-i18n="game.lead">影怪每晚都从海上来。海边小镇只剩灯塔还亮着——开上你的小双翼机守住它，把被拆坏的家一栋栋修好，把居民一个个救回来。</p>
+      <!-- 合规 M-6 / E-5：截图区总说明。6.7 那张是宣传插画（图上有角标），所以写「标了宣传插画的除外」，免得和角标矛盾 -->
+      <p class="shots-note" data-i18n="game.shotsNote">以下为游戏实机截图（标了「宣传插画」的除外）。</p>
 
       <div class="features">
         <!-- 6.7（versionCode 55，11-15 上线）：正文三条一字不改照抄 Play 版本说明终版（小文 11-13，lastlamp-67-release-notes-final-1113.md，已随 55 过审），改字先找小文、小规 -->
@@ -315,6 +324,8 @@
               <li data-i18n="f13.li1">灯塔基金（Google Play 付款）：1500 钻石，在任一街区守到第 10、15、20、25、30 夜时分档领取，每个存档一次</li>
               <li data-i18n="f13.li2">灯火月卡（Google Play 付款）：立刻得 300 钻石和 30 天 VIP，之后 30 天内每天登录可领 20 钻石。一次性购买，不自动续订</li>
             </ul>
+            <!-- 官网祈愿概率公示页入口（f13 正文是 Play 版本说明原文、不能加字，所以单独一行） -->
+            <p class="odds-link" data-i18n="f13.odds"><a href="wish-odds.html">查看祈愿概率公示（每一档的机会、第 60 次保底）</a></p>
             <p class="promo-note" data-i18n="f13.note">配图为宣传插画</p>
           </div>
         </article>
@@ -543,7 +554,9 @@
         </details>
         <details>
           <summary data-i18n="q5">游戏需要哪些权限？</summary>
-          <p data-i18n="a5">只用到网络（广告、Google Play 排行榜、云端存档、购买和匿名游戏统计要用）和广告 ID（Google 广告要用）；商城有可选的应用内购买：真钱只买钻石，幸运盒、复活牌、VIP 月卡这些都用钻石换，通过 Google Play 结算。不读通讯录、相册、位置，也不需要注册账号；游戏进度存在你的手机里，登录 Google Play 游戏后还会存到它的云端存档，换手机也能找回。详见<a href="lastlamp/privacy.html">隐私政策</a>。</p>
+          <!-- 第 5 问：权限句 = 合规 M-4 / E-4 原文（统计关联应用实例 ID，算假名化，不能说成不带任何标识）；
+               商城句按 M-3，但 6.7 起真钱还能买灯火月卡、灯塔基金、节日小礼包，「真钱只买钻石」已不成立，改照隐私政策第 4 条（小规已判过）的说法 -->
+          <p data-i18n="a5">用到网络（广告、Google Play 排行榜和云端存档、购买、游戏统计、下载内容更新要用）和广告 ID（Google 广告要用）。游戏统计不含姓名、邮箱这类个人信息。商城有可选的应用内购买，通过 Google Play 结算：真钱能买钻石、灯火月卡、灯塔基金和节日限时小礼包；幸运盒、华丽祈愿、复活牌、VIP 月卡这些用钻石或灯愿券换。幸运盒和华丽祈愿是随机获得，每件物品的机会都在游戏内公示（幸运盒在商城、祈愿在「概率公示」页，也可以看本站的<a href="wish-odds.html">祈愿概率公示</a>），买之前就能看到。不读通讯录、相册、位置，也不需要注册账号；游戏进度存在你的手机里，登录 Google Play 游戏后还会存到它的云端存档，换手机也能找回。详见<a href="lastlamp/privacy.html">隐私政策</a>。</p>
         </details>
         <details>
           <summary data-i18n="q6">游戏有英文吗？怎么切换？</summary>
@@ -561,6 +574,8 @@
         <div class="about">
           <div>
             <p data-i18n="ab.p">森澜岛游戏是一个独立游戏开发者，做温暖、耐玩、一个人也能慢慢玩下去的小游戏。用心造世界，让快乐生生不息。有问题或建议，请通过 Google Play 商店页面里的“开发者联系方式”给我们发邮件。</p>
+            <!-- 合规 M-6：banner 是品牌插画，不是游戏画面 -->
+            <p class="art-note" data-i18n="ab.artNote">（配图为宣传插画）</p>
           </div>
           <div class="links">
             <a class="btn btn-line" href="https://play.google.com/store/apps/details?id=com.lastlamp.game&amp;utm_source=website&amp;utm_medium=referral&amp;utm_campaign=v67&amp;utm_content=about" data-i18n="ab.play">Google Play 商店页</a>
@@ -574,8 +589,9 @@
 
 <footer>
   <div class="wrap">
-    <span class="mark"><img src="assets/brand/logo-round.webp" alt="森澜岛游戏" width="56" height="56" loading="lazy"><span>© 2026 森澜岛游戏 · 最后一盏灯 The Last Lamp</span></span>
-    <span><a href="lastlamp/privacy.html">隐私政策 · Privacy Policy</a></span>
+    <!-- 页脚：合规 S-4 / E-6（分级 + Google Play 商标说明）；祈愿概率公示入口 -->
+    <span class="mark"><img src="assets/brand/logo-round.webp" alt="森澜岛游戏" width="56" height="56" loading="lazy"><span data-i18n="ft.copy">© 2026 森澜岛游戏 · 最后一盏灯 The Last Lamp · 内容分级以 Google Play 商店页显示为准 · Google Play 是 Google LLC 的商标。</span></span>
+    <span><a href="wish-odds.html">祈愿概率公示 · Wish Odds</a> · <a href="lastlamp/privacy.html">隐私政策 · Privacy Policy</a></span>
   </div>
 </footer>
 
@@ -593,18 +609,21 @@
     'nav.privacy': 'Privacy',
     'hero.logoAlt': 'The Last Lamp',
     'hero.newsTag': '6.7 OUT NOW',
-    'hero.news': 'Spectacular Wishes, Lighthouse Fund, Lamplight Monthly Card',
+    // 合规 E-1 / E-2（小规 11-15）原文照贴
+    'hero.news': 'Spectacular Wishes: use Wish Tickets to draw plane skins, exclusive trails, exclusive orbits and titles at random. Short on tickets? Tick a box to cover the rest with Diamonds. The odds of every tier and the guarantee rule are on the Odds page in the game, shown before you draw.',
     'hero.h1': 'Fly a little biplane, guard the seaside lighthouse from the shadows that come every night, and relight the town one lamp at a time.',
     'hero.chip1': 'Android 8.0 or later',
-    'hero.chip2': 'Free · Optional in-app purchases',
+    'hero.chip2': 'Free to download · Contains ads · Optional in-app purchases (includes random items)',
     'hero.chip3': 'Single-player · Plays offline',
     'hero.chip4': 'Landscape · English / 中文',
     'hero.play': 'Get it on Google Play',
     'hero.apk': 'Download the APK<small>' + APK.ver + ' · ' + APK.mb + ' MB · for phones without Google Play</small>',
     'hero.hint': 'First time installing an APK? See the <a href="#install">install guide</a>: just four steps.',
+    'hero.artNote': 'Background image: illustration.',
     'game.kicker': 'The game',
     'game.h2': 'Guard the town’s last lamp',
     'game.lead': 'Every night, shadows come in from the sea. Only the lighthouse still shines in this little seaside town. Take off in your biplane to guard it, rebuild the wrecked homes and bring the townsfolk back one by one.',
+    'game.shotsNote': 'In-game screenshots (except images marked as illustrations).', // 合规 E-5
     // 6.7：f13 三条照抄 Play 版本说明英文终版（同上方中文注释），一字不改
     'shot.promo67': 'Promotional illustration: villagers on their own little craft fly with the biplane past the seaside lighthouse',
     'promo.tag': 'Promotional illustration',
@@ -612,6 +631,7 @@
     'f13.p': 'Spectacular Wishes: random draws for plane skins, trails, orbits and titles. Odds and the guarantee rule are on the Odds page, shown before you pull',
     'f13.li1': 'Lighthouse Fund (Google Play purchase): 1,500 Diamonds paid out at nights 10/15/20/25/30, once per save',
     'f13.li2': 'Lamplight Monthly Card (Google Play purchase): 300 Diamonds and 30 days of VIP now, then 20 Diamonds for each day you log in over 30 days. No renewal',
+    'f13.odds': '<a href="wish-odds.html#en">See the Wish odds (every tier, guaranteed by wish 60)</a>',
     'f13.note': 'Image: promotional illustration',
     'shot.embers': 'Embers: four kinds drifting over the battle',
     'f10.h3': 'Keep moving · Combos · Embers',
@@ -718,14 +738,17 @@
     'q4': 'Is the APK safe?',
     'a4': 'It’s the same package as on Google Play, with the same official signature (exported from the Google Play console), and it’s only offered on this site, so please don’t download it anywhere else. To check the file hasn’t been changed, compute its SHA-256 and compare it with the one under “Download”.',
     'q5': 'What permissions does the game need?',
-    'a5': 'Only network access (for ads, the Google Play leaderboards, cloud save, purchases and anonymous gameplay statistics) and the advertising ID (for Google ads). The shop has optional in-app purchases: real money only buys Diamonds, and Lucky Boxes, Revive Cards, the VIP Pass and so on are bought with Diamonds, paid through Google Play. It doesn’t read your contacts, photos or location, and needs no account; your progress is saved on your phone, and also in Google Play Games cloud save when you’re signed in, so it comes back on a new phone. See the <a href="lastlamp/privacy.html">privacy policy</a>.',
+    // 第 5 问：权限句 = 合规 E-4 原文；商城句同中文（照隐私政策第 4 条，6.7 起真钱不只买 Diamonds）
+    'a5': 'Network access (for ads, Google Play leaderboards and cloud save, purchases, gameplay statistics and content updates) and the advertising ID (for Google ads). Gameplay statistics don’t include your name or email. The shop has optional in-app purchases, paid through Google Play: real money buys Diamonds, the Lamplight Monthly Card, the Lighthouse Fund and small limited-time holiday packs; Lucky Boxes, Spectacular Wishes, Revive Cards, the VIP Pass and so on are paid with Diamonds or Wish Tickets. Lucky Boxes and Spectacular Wishes give random items, and the chance of every item is shown in the game before you buy (Lucky Boxes in the shop, Wishes on the Odds page; see also our <a href="wish-odds.html#en">Wish odds</a> page). It doesn’t read your contacts, photos or location, and needs no account; your progress is saved on your phone, and also in Google Play Games cloud save when you’re signed in, so it comes back on a new phone. See the <a href="lastlamp/privacy.html">Privacy Policy</a> for details.',
     'q6': 'Is the game in English? How do I switch?',
     'a6': 'Yes, the latest version is in both Chinese and English. The first time you open it, it follows your phone’s language: Chinese phones show Chinese, every other language shows English. To switch, tap “中文 / English” at the bottom left of the title screen.',
     'ab.kicker': 'About us',
     'ab.bannerAlt': '森澜岛游戏 · Crafting worlds with heart, so joy keeps growing',
     'ab.p': '森澜岛游戏 is an independent game developer making warm, easygoing games you can enjoy at your own pace, even on your own. Crafting worlds with heart, so joy keeps growing. Questions or ideas? Email us through the “Developer contact” section on our Google Play page.',
+    'ab.artNote': '(Image: illustration.)',
     'ab.play': 'Google Play page',
-    'ab.privacy': 'Privacy policy'
+    'ab.privacy': 'Privacy policy',
+    'ft.copy': '© 2026 森澜岛游戏 · 最后一盏灯 The Last Lamp · Content rating: see Google Play · Google Play is a trademark of Google LLC.' // 合规 E-6
   }
 
   var KEY = 'site.lang'

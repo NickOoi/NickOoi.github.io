@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>最后一盏灯 · 华丽祈愿概率公示 · The Last Lamp Wish Odds</title>
+<meta name="description" content="《最后一盏灯》华丽祈愿每一档的机会、每件奖励的机会和第 60 次保底规则。The Last Lamp: Spectacular Wishes odds and guarantee.">
+<meta name="theme-color" content="#0a1030">
+<link rel="icon" type="image/png" href="assets/brand/favicon-64.png">
+<!--
+  华丽祈愿概率公示（官网版，2026-11-15 阿灯；合规：小规 11-15 复查 T-1，首页 / 页脚 / FAQ 第 5 问有入口）。
+  数字逐字对 6.7.0（versionCode 55）包内的概率页：
+    档位机会 = lamp-web/src/config.js WISH.tiers；每档里平分 = WISH.drops（game/wish.js wishOdds）；
+    保底 = WISH.pity（60）；含保底综合 = game/wish.js wishGrandComposite（1 / Σ(1−0.015)^k，k=0..59 ≈ 2.52%，平均约 39.7 次）；
+    重复换星屑 = WISH.dup；文案对 lines.zh.js / lines.en.js 的 WISH_TEXT.odds，汇总见 docs/last-lamp-odds-page-text-1113.md。
+  游戏里的配置一改（换池、改机会、改保底），这一页当天同步改，并改下面的「更新日期」。
+  换池时只有典藏那一行的名字变（现在在卖：凤羽极光）。
+-->
+<style>
+  :root { color-scheme: dark; --ground: #0a1030; --panel: #131c47; --line: rgba(170, 186, 255, 0.18); --ink: #f1f2ff; --dim: #aeb5dd; --faint: #7f88b8; --lamp: #ffcf6e; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font: 16px/1.75 "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif; -webkit-text-size-adjust: 100%; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+  a { color: var(--lamp); }
+  .top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px; margin-bottom: 20px; }
+  h1 { font-size: 26px; line-height: 1.35; margin: 0 0 6px; color: #fff3d6; }
+  h2 { font-size: 18px; margin: 28px 0 10px; color: #fff3d6; }
+  p { margin: 0 0 12px; }
+  .meta { color: var(--faint); font-size: 14px; }
+  .dim { color: var(--dim); }
+  .tier { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 0 0 10px; }
+  .tier b { color: var(--lamp); }
+  .tier ul { margin: 6px 0 0; padding-left: 1.2em; color: var(--dim); }
+  .tier li { font-variant-numeric: tabular-nums; }
+  .notice { border-left: 3px solid var(--lamp); padding: 8px 14px; background: rgba(255, 207, 110, 0.08); border-radius: 0 8px 8px 0; color: var(--dim); font-size: 15px; }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 44px 0; }
+</style>
+</head>
+<body>
+<main>
+
+<div class="top"><a href="./">← 返回官网 · Home</a><a href="#en">English ↓</a></div>
+
+<h1>《最后一盏灯》华丽祈愿 · 概率公示</h1>
+<p class="meta">适用版本：6.7.0 起（Google Play 版和本站 APK 相同）· 现在在卖的祈愿池：凤羽极光 · 更新日期：2026 年 11 月 15 日</p>
+<p class="dim">每次祈愿用 1 张灯愿券；券不够时可以勾选用钻石代付，每张 30 颗。下面的机会和游戏里祈愿页「概率」页签（抽卡按钮旁的「概率公示」）显示的一致，抽之前就能看到。</p>
+
+<h2>每次祈愿的机会</h2>
+<div class="tier"><b>典藏 · 1.5%</b><ul><li>这一池的华丽飞机皮肤「凤羽极光」：1.5%</li></ul></div>
+<div class="tier"><b>珍贵 · 6%</b><ul><li>灯芯 ×3：3%</li><li>专属拖尾：3%</li></ul></div>
+<div class="tier"><b>豪华 · 25%</b><ul><li>星屑 ×10：8.33%</li><li>灯芯 ×1：8.33%</li><li>钻石 ×10：8.33%</li></ul></div>
+<div class="tier"><b>普通 · 67.5%</b><ul><li>碎片 ×40：16.88%</li><li>汽油 ×1：16.88%</li><li>抗天气药水 ×1：16.88%</li><li>星屑 ×2：16.88%</li></ul></div>
+<p class="meta">每一档里的几样平分这一档的机会；显示四舍五入到两位小数（例如普通档 4 × 16.88% = 67.52%，实际是 67.5%）。</p>
+
+<h2>保底</h2>
+<p>这一池连续 59 次没出典藏，第 60 次必出（最多 60 次一定拿到）；次数跟着这一池一直记着（每个祈愿池各自计数，换池不清），出了典藏（含重复）才从头算；十连按 10 次逐次计。</p>
+<p>含保底的综合概率：典藏约 2.52%（平均约 39.7 次出一次）。</p>
+
+<h2>重复怎么算</h2>
+<p>这一池的典藏已经有了再抽到，换 150 星屑（可在「星屑兑换」换别的），照样算出了典藏、保底从头算；专属拖尾 / 环绕已经有了再抽到，换 40 星屑。</p>
+
+<p class="notice">此為機會中獎商品，消費者購買或參與活動不代表即可獲得特定商品。</p>
+
+<hr>
+
+<div lang="en">
+<h1 id="en">The Last Lamp · Spectacular Wishes · Odds</h1>
+<p class="meta">Applies to version 6.7.0 and later (the Google Play version and this site's APK are the same) · Current wish pool: Phoenix Aurora · Updated: 15 November 2026</p>
+<p class="dim">Each wish uses 1 Wish Ticket; if you are short, you can tick a box to pay with Diamonds instead, 30 per ticket. The odds below match the "Odds" tab on the wish page in the game (also opened by the "Odds" button next to the wish buttons), shown before you draw.</p>
+
+<h2>Odds per wish</h2>
+<div class="tier"><b>Treasure · 1.5%</b><ul><li>This pool's spectacular plane skin, Phoenix Aurora: 1.5%</li></ul></div>
+<div class="tier"><b>Precious · 6%</b><ul><li>3 Wicks: 3%</li><li>Exclusive trail: 3%</li></ul></div>
+<div class="tier"><b>Deluxe · 25%</b><ul><li>10 Stardust: 8.33%</li><li>1 Wick: 8.33%</li><li>10 Diamonds: 8.33%</li></ul></div>
+<div class="tier"><b>Common · 67.5%</b><ul><li>40 Shards: 16.88%</li><li>1 Fuel: 16.88%</li><li>1 Weather potion: 16.88%</li><li>2 Stardust: 16.88%</li></ul></div>
+<p class="meta">The items in a tier share that tier's chance equally; figures are rounded to two decimals (for example 4 × 16.88% = 67.52% in the Common tier; the actual chance is 67.5%).</p>
+
+<h2>Guarantee</h2>
+<p>If 59 wishes in a row in this pool miss the Treasure, wish number 60 gives it (you get it within 60 wishes at most). The count stays with the pool (each wish pool counts separately; switching pools keeps it) and resets only when you get the Treasure (duplicates count). A 10-wish counts as 10 single wishes.</p>
+<p>Overall Treasure rate including the guarantee: about 2.52% (about once every 39.7 wishes on average).</p>
+
+<h2>Duplicates</h2>
+<p>If you already own this pool's Treasure and get it again, it becomes 150 Stardust (spend it in the Stardust shop); it still counts as a Treasure, so the guarantee count starts over. An exclusive trail / orbit you already own becomes 40 Stardust.</p>
+
+<p class="notice">Wishes are a chance-based item: making a purchase or taking part does not guarantee any specific item.</p>
+</div>
+
+<p class="meta" style="margin-top:40px"><a href="./">← 返回官网 · Home</a> · <a href="lastlamp/privacy.html">隐私政策 · Privacy Policy</a></p>
+
+</main>
+</body>
+</html>
