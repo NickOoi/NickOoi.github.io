@@ -451,6 +451,10 @@
       </div>
 
       <div class="gallery" aria-label="更多游戏截图" data-i18n-label="gallery.label">
+        <!-- 6.7 实机截图（11-15 阿灯）：取自 55 包 BlueStacks 实测图 docs/qa/p0-55-14.png（祈愿页）/ p0-55-wish-on.png（VIP 页签），1600×900 → 1280×720。
+             只有中文界面（英文界面要开模拟器重截），所以不写 data-en-src，英文说明里注明 Chinese UI。祈愿说明按合规口径同时写「随机」和「概率公示在哪」 -->
+        <div class="shot"><img src="assets/shots/wish-67.jpg" alt="6.7 华丽祈愿页（随机获得）：典藏皮肤「凤羽极光」，抽卡按钮旁有「概率公示」" data-i18n-alt="shot.wish67" loading="lazy" width="1280" height="720"></div>
+        <div class="shot"><img src="assets/shots/vip-67.jpg" alt="6.7 商城 VIP 页签：灯火月卡、灯塔基金" data-i18n-alt="shot.vip67" loading="lazy" width="1280" height="720"></div>
         <div class="shot"><img src="assets/shots/tide-town.jpg" data-en-src="assets/shots/en/tide-town.jpg" alt="潮汐港：船坞亮起灯" data-i18n-alt="shot.g5" loading="lazy" width="1280" height="720"></div>
         <div class="shot"><img src="assets/shots/turbulence.jpg" data-en-src="assets/shots/en/turbulence.jpg" alt="第 15 夜起高难度：乱流让方向全反" data-i18n-alt="shot.g6" loading="lazy" width="1280" height="720"></div>
         <div class="shot"><img src="assets/shots/badges.jpg" data-en-src="assets/shots/en/badges.jpg" alt="灯塔徽章：永久加成" data-i18n-alt="shot.g7" loading="lazy" width="1280" height="720"></div>
@@ -543,7 +547,7 @@
         </details>
         <details>
           <summary data-i18n="q3">以后怎么更新？进度会不会丢？</summary>
-          <p data-i18n="a3">有新版本时回到本页下载新的 APK，直接安装覆盖就行，进度保留。本站 APK 和 Google Play 版签名相同，以后能上 Google Play 了也可以直接在 Play 里更新，进度都在。</p>
+          <p data-i18n="a3">有新版本时回到本页下载新的 APK，直接安装覆盖就行，进度保留。本站 APK 和 Google Play 版签名相同，也可以改从 Google Play 安装和更新，进度都在。</p>
         </details>
         <details>
           <summary data-i18n="q4">安装包安全吗？</summary>
@@ -685,10 +689,9 @@
     'f4.h3': 'Hangar upgrades · Resident supplies',
     'f4.p': 'Spend the lamp shards you win to upgrade your warhead, engine, shock absorbers and winch. Once residents reopen their shops, buy supplies before a battle: hot soup shields the lighthouse, an everlasting wick speeds up your guns and a wheat bun makes every bullet hit harder.',
     'gallery.label': 'More screenshots',
+    'shot.wish67': '6.7 Spectacular Wishes page (Chinese UI; random rewards): the Treasure skin Phoenix Aurora, with the "Odds" button next to the wish buttons',
+    'shot.vip67': '6.7 Shop, VIP tab (Chinese UI): Lamplight Monthly Card and Lighthouse Fund',
     'shot.g1': 'Critical hits, blocks and MISS',
-    'shot.g2': 'Shadow Raid: defend, or raise a barrier',
-    'shot.g3': 'Choosing a district, with the raid card on top',
-    'shot.g4': 'Achievements and titles',
     'shot.g5': 'Tide Harbor: the shipyard lit up',
     'shot.g6': 'From night 15: turbulence reverses your controls',
     'shot.g7': 'Lighthouse badges with permanent bonuses',
@@ -730,7 +733,7 @@
     'q2': 'It says “App not installed” or that it conflicts with an existing app',
     'a2': 'The APK here has the same signature as the Google Play version, so either one can update the other. This message usually means a copy of The Last Lamp from somewhere else is installed, or the installed version is newer (you can’t install an older version over a newer one). In the first case, uninstall the old copy first — note that uninstalling clears the game progress on the phone.',
     'q3': 'How do I update? Will I lose my progress?',
-    'a3': 'When a new version comes out, download the new APK from this page and install it over the old one; your progress stays. Because this APK and the Google Play version share the same signature, you can also switch to updating through Google Play later, with all your progress.',
+    'a3': 'When a new version comes out, download the new APK from this page and install it over the old one; your progress stays. Because this APK and the Google Play version share the same signature, you can also switch to installing and updating through Google Play, with all your progress.',
     'q4': 'Is the APK safe?',
     'a4': 'It’s the same package as on Google Play, with the same official signature (exported from the Google Play console), and it’s only offered on this site, so please don’t download it anywhere else. To check the file hasn’t been changed, compute its SHA-256 and compare it with the one under “Download”.',
     'q5': 'What permissions does the game need?',
