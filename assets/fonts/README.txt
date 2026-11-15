@@ -12,4 +12,7 @@ cinzel-700-sub.woff2   Cinzel Bold（Natanael Gama），SIL Open Font License 1.
   Cinzel：英文版（页面切到 English）的 <h2>、<h3>、小标签
 改了这些标题的文字，就要按新的字重新生成两个文件，否则新字会退回系统字体。
 
+2026-11-15 重新生成思源宋体子集（6.7「华丽祈愿 · 灯塔基金 · 灯火月卡」）：改成用脚本做，
+  python -I D:\CodexData\game3-lastlamp\scripts\site\regen-serif-subset.py index.html assets\fonts\notoserifsc-600-sub.woff2
+  脚本从本页 <h1> / <h3> / .kicker 抽出全部字 + 0-9，向 Google Fonts 要子集，以后改标题照跑一次即可。
 2026-10-25 重新生成思源宋体子集：6.3（影潮来袭、四款大招 · 暴击格挡）和 6.4（潮汐港、天气异常 · 高难度、灾害级周末副本、两座小镇，九个街区）新标题的字补进去了（6.3 那次漏了，线上那两个标题一直混着系统字体）。
