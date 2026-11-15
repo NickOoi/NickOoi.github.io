@@ -140,6 +140,8 @@
   .shot.promo .promo-tag { position: absolute; right: 10px; bottom: 10px; font-family: var(--sans); font-size: 12px; line-height: 1.6; color: #fff; background: rgba(10, 14, 28, 0.85); border: 1px solid #c9d1e0; border-radius: 6px; padding: 1px 8px; }
   .feature .promo-note { margin: 10px 0 0; font-size: 13px; color: var(--faint); }
   .feature h3 { margin: 0 0 10px; font-family: var(--serif); font-weight: 600; font-size: 28px; letter-spacing: 0.06em; color: #fff3d6; }
+  /* 中文长标题按「 · 」分段折行：每段包一个 .nw，避免手机宽度把「灯火月卡」拆成「灯 / 火月卡」 */
+  .feature h3 .nw { white-space: nowrap; }
   .feature h3 .new { font-family: var(--sans); font-size: 12px; font-weight: 700; color: var(--lamp-ink); background: var(--lamp); border-radius: 6px; padding: 1px 7px; margin-left: 8px; vertical-align: 4px; letter-spacing: 0.04em; }
   .feature p { margin: 0 0 10px; color: var(--dim); }
   .feature ul { margin: 0; padding-left: 1.1em; color: var(--dim); }
@@ -307,7 +309,7 @@
         <article class="feature">
           <div class="shot promo"><img src="assets/shots/promo-67.jpg" alt="宣传插画：村民们坐着各自的小飞行器，跟着小飞机飞过海边灯塔" data-i18n-alt="shot.promo67" loading="lazy" width="1200" height="630"><span class="promo-tag" data-i18n="promo.tag">宣传插画</span></div>
           <div>
-            <h3 data-i18n="f13.h3">华丽祈愿 · 灯塔基金 · 灯火月卡<span class="new">6.7 新</span></h3>
+            <h3 data-i18n="f13.h3"><span class="nw">华丽祈愿 ·</span> <span class="nw">灯塔基金 ·</span> <span class="nw">灯火月卡</span><span class="new">6.7 新</span></h3>
             <p data-i18n="f13.p">华丽祈愿（随机获得）：华丽飞机皮肤、专属拖尾、专属环绕和称号。每一档的机会和保底规则都写在祈愿页「概率公示」里，抽之前就能看到</p>
             <ul>
               <li data-i18n="f13.li1">灯塔基金（Google Play 付款）：1500 钻石，在任一街区守到第 10、15、20、25、30 夜时分档领取，每个存档一次</li>
