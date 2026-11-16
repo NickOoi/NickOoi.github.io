@@ -234,11 +234,19 @@
     .brand span { display: none; }
     /* 11-16 ③（小智派「英文 390 首屏下载按钮回到首屏」）：手机上首图矮一点、6.7 横幅改成标签在上整行排字、
        下载按钮排到属性标签前面（标签紧跟在按钮下面，仍在首屏区）；量法 docs/qa/site67-en-390-top.png，改前 Google Play 按钮顶在 y≈1155 */
-    .hero-art { height: min(110vw, 560px); }
+    /* 11-16 ④ 续：插画句 + chip-key 挪到按钮上方后，英文 390 首屏 Google Play 按钮顶在 y≈830、按钮被 844 切掉（docs/qa/site-hero390fix-en-390f.png），
+       首图再矮约 55px（110vw → 96vw），让按钮整颗回到首屏 */
+    .hero-art { height: min(96vw, 560px); }
     .hero-body .wrap { display: flex; flex-direction: column; align-items: flex-start; }
     .hero-body .wrap > * { max-width: 100%; }
-    .hero-body .chips { order: 1; margin: 16px 0 0; }
-    .hero-body .art-note { order: 2; }
+    /* 11-16 ④（小检 390 首屏复查 2 处合规，小智定改法）：手机首屏必须同时看到「含广告 · 含随机道具」和「宣传插画」。
+       插画句提到 6.7 横幅正下方（news -2、art-note -1）；属性标签拆开（chips 变 display: contents），
+       只把 .chip-key「免费下载 · 含广告 · 可选内购（含随机道具）」留在下载按钮上方，其余三个排到安装提示后面，免得把按钮挤出首屏。只改手机排法，1280 宽不变 */
+    .hero-body .news { order: -2; margin-bottom: 6px; }
+    .hero-body .art-note { order: -1; margin: 0 0 12px; }
+    .hero-body .chips { display: contents; }
+    .hero-body .chips li { order: 1; margin-top: 8px; }
+    .hero-body .chips li.chip-key { order: 0; margin-top: 12px; }
     .hero .cta { width: 100%; margin-top: 12px; }
     .hero-art .bg { background-image: url("assets/hero-sm.jpg"); background-position: 50% 30%; }
     .hero-art .flash { background: radial-gradient(ellipse 70% 50% at 82% 4%, rgba(200, 216, 255, 0.9), rgba(110, 140, 255, 0.28) 38%, transparent 70%); }
@@ -435,7 +443,7 @@
       <h1 data-i18n="hero.h1">开着小飞机守住海边灯塔，打退每晚从海上来的影怪，把镇上的灯一盏盏点回来。</h1>
       <ul class="chips">
         <li data-i18n="hero.chip1">Android 8.0 及以上</li>
-        <li data-i18n="hero.chip2">免费下载 · 含广告 · 可选内购（含随机道具）</li>
+        <li class="chip-key" data-i18n="hero.chip2">免费下载 · 含广告 · 可选内购（含随机道具）</li>
         <li data-i18n="hero.chip3">单机 · 不联网也能玩</li>
         <li data-i18n="hero.chip4">横屏 · 中文 / English</li>
       </ul>
