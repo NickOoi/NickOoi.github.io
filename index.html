@@ -146,7 +146,8 @@
   .feature h3 { margin: 0 0 10px; font-family: var(--serif); font-weight: 600; font-size: 28px; letter-spacing: 0.06em; color: #fff3d6; }
   /* 中文长标题按「 · 」分段折行：每段包一个 .nw，避免手机宽度把「灯火月卡」拆成「灯 / 火月卡」 */
   .feature h3 .nw { white-space: nowrap; }
-  .feature h3 .new { font-family: var(--sans); font-size: 12px; font-weight: 700; color: var(--lamp-ink); background: var(--lamp); border-radius: 6px; padding: 1px 7px; margin-left: 8px; vertical-align: 4px; letter-spacing: 0.04em; }
+  /* 角标整块不折行：11-16 线上 1280 宽中文截图里「6.7 新」被拆成「6.7 / 新」两行 */
+  .feature h3 .new { font-family: var(--sans); font-size: 12px; font-weight: 700; color: var(--lamp-ink); background: var(--lamp); border-radius: 6px; padding: 1px 7px; margin-left: 8px; vertical-align: 4px; letter-spacing: 0.04em; white-space: nowrap; }
   .feature p { margin: 0 0 10px; color: var(--dim); }
   .feature ul { margin: 0; padding-left: 1.1em; color: var(--dim); }
   .feature li { margin: 2px 0; }
@@ -608,9 +609,10 @@
 
       <div class="gallery" aria-label="更多游戏截图" data-i18n-label="gallery.label">
         <!-- 6.7 实机截图（11-15 阿灯）：取自 55 包 BlueStacks 实测图 docs/qa/p0-55-14.png（祈愿页）/ p0-55-wish-on.png（VIP 页签），1600×900 → 1280×720。
-             只有中文界面（英文界面要开模拟器重截），所以不写 data-en-src，英文说明里注明 Chinese UI。祈愿说明按合规口径同时写「随机」和「概率公示在哪」 -->
-        <div class="shot"><img src="assets/shots/wish-67.jpg" alt="6.7 华丽祈愿页（随机获得）：典藏皮肤「凤羽极光」，抽卡按钮旁有「概率公示」" data-i18n-alt="shot.wish67" loading="lazy" width="1280" height="720"></div>
-        <div class="shot"><img src="assets/shots/vip-67.jpg" alt="6.7 商城 VIP 页签：灯火月卡、灯塔基金" data-i18n-alt="shot.vip67" loading="lazy" width="1280" height="720"></div>
+             英文界面图（11-16 阿灯）：同一模拟器切英文后重截 docs/qa/en67/03.png（祈愿页）/ 04.png（VIP 页签），1600×900 → 1280×720，存 assets/shots/en/。
+             祈愿说明按合规口径同时写「随机」和「概率公示在哪」 -->
+        <div class="shot"><img src="assets/shots/wish-67.jpg" data-en-src="assets/shots/en/wish-67.jpg" alt="6.7 华丽祈愿页（随机获得）：典藏皮肤「凤羽极光」，抽卡按钮旁有「概率公示」" data-i18n-alt="shot.wish67" loading="lazy" width="1280" height="720"></div>
+        <div class="shot"><img src="assets/shots/vip-67.jpg" data-en-src="assets/shots/en/vip-67.jpg" alt="6.7 商城 VIP 页签：灯火月卡、灯塔基金" data-i18n-alt="shot.vip67" loading="lazy" width="1280" height="720"></div>
         <div class="shot"><img src="assets/shots/tide-town.jpg" data-en-src="assets/shots/en/tide-town.jpg" alt="潮汐港：船坞亮起灯" data-i18n-alt="shot.g5" loading="lazy" width="1280" height="720"></div>
         <div class="shot"><img src="assets/shots/turbulence.jpg" data-en-src="assets/shots/en/turbulence.jpg" alt="第 15 夜起高难度：乱流让方向全反" data-i18n-alt="shot.g6" loading="lazy" width="1280" height="720"></div>
         <div class="shot"><img src="assets/shots/badges.jpg" data-en-src="assets/shots/en/badges.jpg" alt="灯塔徽章：永久加成" data-i18n-alt="shot.g7" loading="lazy" width="1280" height="720"></div>
@@ -847,8 +849,8 @@
     'f4.h3': 'Hangar upgrades · Resident supplies',
     'f4.p': 'Spend the lamp shards you win to upgrade your warhead, engine, shock absorbers and winch. Once residents reopen their shops, buy supplies before a battle: hot soup shields the lighthouse, an everlasting wick speeds up your guns and a wheat bun makes every bullet hit harder.',
     'gallery.label': 'More screenshots',
-    'shot.wish67': '6.7 Spectacular Wishes page (Chinese UI; random rewards): the Treasure skin Phoenix Aurora, with the "Odds" button next to the wish buttons',
-    'shot.vip67': '6.7 Shop, VIP tab (Chinese UI): Lamplight Monthly Card and Lighthouse Fund',
+    'shot.wish67': '6.7 Spectacular Wishes page (random rewards): the Treasure skin Phoenix Aurora, with the "Odds" button next to the wish buttons',
+    'shot.vip67': '6.7 Shop, VIP tab:Lamplight Monthly Card and Lighthouse Fund',
     'shot.g1': 'Critical hits, blocks and MISS',
     'shot.g5': 'Tide Harbor: the shipyard lit up',
     'shot.g6': 'From night 15: turbulence reverses your controls',
