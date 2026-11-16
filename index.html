@@ -231,6 +231,10 @@
     .nav .wrap { gap: 10px; }
     .nav nav a { padding: 6px 7px; font-size: 14px; }
     .lang-switch button { padding: 6px 8px; font-size: 13px; }
+    /* 11-16（小智派「英文 412 顶栏 Privacy 被切成 Privac」）：英文四个链接比中文长，401~560 宽四个都显示时差十几像素放不下；
+       只给英文把链接左右内边距 7→5、顶栏间距 10→8，字号不变；中文不进这两行（中文本来放得下） */
+    html[lang="en"] .nav .wrap { gap: 8px; }
+    html[lang="en"] .nav nav a { padding: 6px 5px; }
     .brand span { display: none; }
     /* 11-16 ③（小智派「英文 390 首屏下载按钮回到首屏」）：手机上首图矮一点、6.7 横幅改成标签在上整行排字、
        下载按钮排到属性标签前面（标签紧跟在按钮下面，仍在首屏区）；量法 docs/qa/site67-en-390-top.png，改前 Google Play 按钮顶在 y≈1155 */
