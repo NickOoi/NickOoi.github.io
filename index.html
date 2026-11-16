@@ -231,14 +231,21 @@
     .nav nav a { padding: 6px 7px; font-size: 14px; }
     .lang-switch button { padding: 6px 8px; font-size: 13px; }
     .brand span { display: none; }
-    .hero-art { height: min(125vw, 560px); }
+    /* 11-16 ③（小智派「英文 390 首屏下载按钮回到首屏」）：手机上首图矮一点、6.7 横幅改成标签在上整行排字、
+       下载按钮排到属性标签前面（标签紧跟在按钮下面，仍在首屏区）；量法 docs/qa/site67-en-390-top.png，改前 Google Play 按钮顶在 y≈1155 */
+    .hero-art { height: min(110vw, 560px); }
+    .hero-body .wrap { display: flex; flex-direction: column; align-items: flex-start; }
+    .hero-body .wrap > * { max-width: 100%; }
+    .hero-body .chips { order: 1; margin: 16px 0 0; }
+    .hero-body .art-note { order: 2; }
+    .hero .cta { width: 100%; margin-top: 12px; }
     .hero-art .bg { background-image: url("assets/hero-sm.jpg"); background-position: 50% 30%; }
     .hero-art .flash { background: radial-gradient(ellipse 70% 50% at 82% 4%, rgba(200, 216, 255, 0.9), rgba(110, 140, 255, 0.28) 38%, transparent 70%); }
     .hero-top .wrap { padding-block: 18px 0; }
     .hero .logo { width: 62vw; } /* 手机上标志小一点，别压到飞机的上翼 */
     .hero-body { margin-top: -96px; }
     .hero-body .wrap { padding-block: 0 40px; }
-    .news { font-size: 14px; align-items: flex-start; border-radius: 18px; }
+    .news { flex-direction: column; align-items: flex-start; gap: 8px; padding: 10px 14px 12px; font-size: 14px; line-height: 1.55; border-radius: 18px; }
     .btn { width: 100%; justify-content: center; }
     .steps { grid-template-columns: 1fr; }
     .qr, .desk-only { display: none; }
@@ -756,7 +763,8 @@
     'hero.logoAlt': 'The Last Lamp',
     'hero.newsTag': '6.7 OUT NOW',
     // 合规 E-1 / E-2（小规 11-15）原文照贴
-    'hero.news': 'Spectacular Wishes: use Wish Tickets to draw plane skins and exclusive trails at random; exclusive orbits and titles come from the Stardust shop or wish milestones. Short on tickets? Tick a box to cover the rest with Diamonds. The odds of every tier and the guarantee rule are on the Odds page in the game, shown before you draw.',
+    // 11-16 ③ 缩短（英文 390 首屏放不下下载按钮）：保留小规 E-1 必须的「at random」和「概率在哪看」，删钻石补足那句；小规原句到了以她为准
+    'hero.news': 'Spectacular Wishes: draw plane skins and exclusive trails at random with Wish Tickets; orbits and titles come from the Stardust shop or milestones. Odds and the guarantee rule are on the in-game Odds page, shown before you draw.',
     'hero.h1': 'Fly a little biplane, guard the seaside lighthouse from the shadows that come every night, and relight the town one lamp at a time.',
     'hero.chip1': 'Android 8.0 or later',
     'hero.chip2': 'Free to download · Contains ads · Optional in-app purchases (includes random items)',
