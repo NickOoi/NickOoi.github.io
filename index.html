@@ -252,7 +252,8 @@
   ===== 11-16 特效改版（老板「优化一下官网设计比较酷特效拉满的风格」，阿灯）=====
   只加视觉层，不改任何文字、链接、概率公示、下载按钮和 APK；全部集中在下面这段 <style id="fx">、紧跟的开关脚本和页尾 <script id="fx-js">。
   撤回：在官网仓库 git revert 这一笔提交（只动 index.html 这三段）。
-  开关：html.fx 才启用滚动进场（没有 IntersectionObserver、或系统开了“减少动态效果”时不加，页面就是原来的静态样子，内容不会被藏）。
+  开关：html.fx 才启用滚动进场（没有 IntersectionObserver、或系统开了“减少动态效果”时不加，页面就是原来的静态样子）。
+  所有进场动画只做位移 / 光效，不把内容设成透明或裁掉：动画没跑完时文字、截图、下载按钮、概率公示入口也一直可见（11-16 修，见 docs/last-lamp-handoff.md）。
   性能：粒子只画在首屏、离开首屏 / 切到后台就停；手机粒子减半、像素比上限 1.5。
   层级：粒子 / 光带都在 .hero-art 里（z-index 1），文字和按钮所在的 .hero-body 是 z-index 2，盖不住下载按钮和概率公示入口。
 -->
@@ -297,9 +298,10 @@
   html.fx .hero .chips { animation: fx-rise 0.9s var(--fx-ease) 0.62s both; }
   html.fx .hero .cta { animation: fx-rise 0.9s var(--fx-ease) 0.74s both; }
   html.fx .hero .hint, html.fx .hero .art-note { animation: fx-rise 0.9s var(--fx-ease) 0.86s both; }
-  @keyframes fx-logo { from { opacity: 0; transform: translateY(-18px) scale(0.96); filter: drop-shadow(0 0 0 rgba(255, 200, 100, 0)) blur(6px); } to { opacity: 1; transform: none; } }
+  /* 入场只做位移、不做透明：动画万一没跑完（老设备卡顿、截图 / 抓取工具），标题、公告和下载按钮也照样看得见（11-16 无头截图发现过全藏的问题） */
+  @keyframes fx-logo { from { transform: translateY(-18px) scale(0.96); } to { transform: none; } }
   @keyframes fx-logo-glow { 0%, 100% { filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 10px rgba(255, 200, 110, 0.25)); } 50% { filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 26px rgba(255, 200, 110, 0.6)); } }
-  @keyframes fx-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  @keyframes fx-rise { from { transform: translateY(22px); } to { transform: none; } }
 
   /* ---- 按钮：悬停发光 + 一道光扫过（光在文字下面，不挡字） ---- */
   .btn { position: relative; isolation: isolate; overflow: hidden; transition: transform 0.25s var(--fx-ease), box-shadow 0.25s, background-color 0.25s, border-color 0.25s; }
@@ -355,12 +357,9 @@
   /* ---- 滚动进场（只在 html.fx 下；JS 进视口时加 .fx-in） ---- */
   html.fx section::before { transform: translateX(-50%) scaleX(0); transition: transform 1.3s var(--fx-ease); }
   html.fx section.fx-in::before { transform: translateX(-50%) scaleX(1); }
-  html.fx .fx-rv { opacity: 0; transform: translateY(32px); transition: opacity 0.9s var(--fx-ease), transform 0.9s var(--fx-ease); transition-delay: var(--fx-d, 0s); }
-  html.fx .fx-rv.fx-in { opacity: 1; transform: none; }
-  /* 特色区的截图从侧面“揭开”：奇数从左、偶数从右。四边留 -80px，揭开后阴影 / 发光不被裁掉（圆角由 .shot 自己的 overflow 管） */
-  html.fx .feature.fx-rv .shot { clip-path: inset(-80px 100% -80px -80px); transition: clip-path 1.1s var(--fx-ease) 0.1s, transform 0.35s var(--fx-ease), box-shadow 0.35s, border-color 0.35s; }
-  html.fx .feature.fx-rv:nth-child(even) .shot { clip-path: inset(-80px -80px -80px 100%); }
-  html.fx .feature.fx-rv.fx-in .shot { clip-path: inset(-80px -80px -80px -80px); }
+  /* 只位移不隐藏（同上：进场没触发 / 没跑完时内容仍完整可读；原来的透明渐显和截图“侧面揭开”已去掉） */
+  html.fx .fx-rv { transform: translateY(32px); transition: transform 0.9s var(--fx-ease); transition-delay: var(--fx-d, 0s); }
+  html.fx .fx-rv.fx-in { transform: none; }
 
   /* 系统开了“减少动态效果”：所有特效动画停掉，页面就是静态的、内容全可读 */
   @media (prefers-reduced-motion: reduce) {
