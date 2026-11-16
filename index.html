@@ -470,13 +470,17 @@
           <div class="shot promo"><img src="assets/shots/promo-67.jpg" alt="宣传插画：村民们坐着各自的小飞行器，跟着小飞机飞过海边灯塔" data-i18n-alt="shot.promo67" loading="lazy" width="1200" height="630"><span class="promo-tag" data-i18n="promo.tag">宣传插画</span></div>
           <div>
             <h3 data-i18n="f13.h3"><span class="nw">华丽祈愿 ·</span> <span class="nw">灯塔基金 ·</span> <span class="nw">灯火月卡</span><span class="new">6.7 新</span></h3>
-            <p data-i18n="f13.p">华丽祈愿（随机获得）：华丽飞机皮肤、专属拖尾；专属环绕和称号用星屑兑换或累计祈愿领取。每一档的机会和保底规则都写在祈愿页「概率公示」里，抽之前就能看到</p>
+            <!-- 11-16 f13.p 中英换小规原句（lastlamp-site-index-and-tw-notice-check.md ①）：加「等 / and more」因为还能抽到灯芯、星屑、钻石、碎片 -->
+            <p data-i18n="f13.p">华丽祈愿（随机获得）：华丽飞机皮肤、专属拖尾等；专属环绕和称号不靠抽，用星屑兑换或累计祈愿领取。每一档的机会和保底规则都写在祈愿页「概率公示」里，抽之前就能看到</p>
             <ul>
               <li data-i18n="f13.li1">灯塔基金（Google Play 付款）：1500 钻石，在任一街区守到第 10、15、20、25、30 夜时分档领取，每个存档一次</li>
               <li data-i18n="f13.li2">灯火月卡（Google Play 付款）：立刻得 300 钻石和 30 天 VIP，之后 30 天内每天登录可领 20 钻石。一次性购买，不自动续订</li>
             </ul>
             <!-- 官网祈愿概率公示页入口（f13 正文是 Play 版本说明原文、不能加字，所以单独一行） -->
             <p class="odds-link" data-i18n="f13.odds"><a href="wish-odds.html">查看祈愿概率公示（每一档的机会、第 60 次保底）</a></p>
+            <!-- 11-16 台湾法定固定句（小规 ③：规定要求官网首页载明），繁体逐字保留不改；
+                 小规原稿 class="meta"，但本页 .meta 是下载区 dl 的两列网格样式（:166），改用同块的 odds-link 样式，文字不变 -->
+            <p class="odds-link" data-i18n="f13.tw"><a href="wish-odds.html">华丽祈愿 / 幸运盒概率公示</a> · <span lang="zh-Hant">此為機會中獎商品，消費者購買或參與活動不代表即可獲得特定商品。</span></p>
             <p class="promo-note" data-i18n="f13.note">配图为宣传插画</p>
           </div>
         </article>
@@ -782,10 +786,11 @@
     'shot.promo67': 'Promotional illustration: villagers on their own little craft fly with the biplane past the seaside lighthouse',
     'promo.tag': 'Promotional illustration',
     'f13.h3': 'Spectacular Wishes · Lighthouse Fund · Lamplight Monthly Card<span class="new">New in 6.7</span>',
-    'f13.p': 'Spectacular Wishes: random draws for plane skins and trails; orbits and titles come from the Stardust shop or milestones. Odds and the guarantee rule are on the Odds page, shown before you pull',
+    'f13.p': 'Spectacular Wishes: random draws for plane skins, trails and more; orbits and titles are not drawn, they come from the Stardust shop or wish milestones. Odds and the guarantee rule are on the Odds page, shown before you pull',
     'f13.li1': 'Lighthouse Fund (Google Play purchase): 1,500 Diamonds paid out at nights 10/15/20/25/30, once per save',
     'f13.li2': 'Lamplight Monthly Card (Google Play purchase): 300 Diamonds and 30 days of VIP now, then 20 Diamonds for each day you log in over 30 days. No renewal',
     'f13.odds': '<a href="wish-odds.html#en">See the Wish odds (every tier, guaranteed by wish 60)</a>',
+    'f13.tw': '<a href="wish-odds.html#en">Wish and Lucky Box odds</a> · Chance-based items: a purchase does not guarantee any specific item.',
     'f13.note': 'Image: promotional illustration',
     'shot.embers': 'Embers: four kinds drifting over the battle',
     'f10.h3': 'Keep moving · Combos · Embers',
