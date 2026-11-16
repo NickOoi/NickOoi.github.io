@@ -262,6 +262,11 @@
   @media (max-width: 400px) {
     .nav nav a[href="lastlamp/privacy.html"] { display: none; } /* 窄屏顶栏放不下：隐私政策页脚和“关于我们”里都有 */
   }
+  /* 11-16 ⑤（小检 360×640 不滚动复查判“不过”：「含广告 · 含随机道具」那行底边超出首屏 21px，小智派）：
+     只在 ≤380 宽的手机上把首图再矮一点（96vw → 88vw，360 宽时约 346 → 317，省约 29px），390 / 412 宽不进这一段、排法不变 */
+  @media (max-width: 380px) {
+    .hero-art { height: 88vw; }
+  }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } .hero-art .bg, .hero-art .rain, .hero-art .flash, .news, .news b, .hero .cta .btn-gold { animation: none; } }
 </style>
 <!--
