@@ -266,6 +266,12 @@
      只在 ≤380 宽的手机上把首图再矮一点（96vw → 88vw，360 宽时约 346 → 317，省约 29px），390 / 412 宽不进这一段、排法不变 */
   @media (max-width: 380px) {
     .hero-art { height: 88vw; }
+    /* 11-16 ⑥（小智派「英文 360×640 首屏『含广告 / 内购』整行放进首屏」，改前底边超出 97px）：英文横幅和标语都比中文长很多，
+       只在英文 ≤380 宽把 chip-key 提到标语上面（横幅 → 插画句 → chip-key → 标语 → 按钮），省掉标语那几行的高度；
+       不加字、不删字、不改字号；中文（html lang=zh-CN）和英文 390 / 412 宽都不进这条，排法不变 */
+    html[lang="en"] .hero-body .news { order: -3; }
+    html[lang="en"] .hero-body .art-note { order: -2; }
+    html[lang="en"] .hero-body .chips li.chip-key { order: -1; margin-top: 0; margin-bottom: 12px; }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } .hero-art .bg, .hero-art .rain, .hero-art .flash, .news, .news b, .hero .cta .btn-gold { animation: none; } }
 </style>
