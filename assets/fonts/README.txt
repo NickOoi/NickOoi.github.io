@@ -13,6 +13,8 @@ cinzel-700-sub.woff2   Cinzel Bold（Natanael Gama），SIL Open Font License 1.
 改了这些标题的文字，就要按新的字重新生成两个文件，否则新字会退回系统字体。
 
 2026-11-22 重新生成思源宋体子集（6.8.1 卡标题「黑暗很大，灯只要一盏」），命令同下。
+  第一次跑（e65f24d）只出了 0-9 共 10 个字：脚本按第一个 <script> 截断，而 11-16 起 <head> 里也有 <script>，
+  标题全被截掉了。脚本已改成从 <body> 开始取，取不到 <h1> 就报错退出；重跑后补推。
 2026-11-15 重新生成思源宋体子集（versionCode 55「华丽祈愿 · 灯塔基金 · 灯火月卡」）：改成用脚本做，
   python -I D:\CodexData\game3-lastlamp\scripts\site\regen-serif-subset.py index.html assets\fonts\notoserifsc-600-sub.woff2
   脚本从本页 <h1> / <h3> / .kicker 抽出全部字 + 0-9，向 Google Fonts 要子集，以后改标题照跑一次即可。
