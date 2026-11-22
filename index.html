@@ -650,8 +650,9 @@
       </div>
 
       <div class="gallery" aria-label="更多游戏截图" data-i18n-label="gallery.label">
-        <!-- 祈愿 / VIP 实机截图（11-15 阿灯）：取自 versionCode 55 包 BlueStacks 实测图 docs/qa/p0-55-14.png（祈愿页）/ p0-55-wish-on.png（VIP 页签），1600×900 → 1280×720；这两页 61 号没改，图照用。
-             英文界面图（11-16 阿灯）：同一模拟器切英文后重截 docs/qa/en67/03.png（祈愿页）/ 04.png（VIP 页签），1600×900 → 1280×720，存 assets/shots/en/。
+        <!-- 祈愿 / VIP 实机截图（11-22 阿灯重截，换掉右下角 v6.7.0 的旧图）：versionCode 61 / 6.8.1，BlueStacks Pie64_3（127.0.0.1:5585），右下角 v6.8.1。
+             中文：docs/qa/site681-live/s681-03.png（祈愿页）/ s681-02.png（VIP 页签）；英文：同机切 English 后 s681-e04.png（祈愿页）/ s681-e03.png（VIP 页签）。
+             均 1600×900 → 1280×720（quality 85），文件名沿用 *-67.jpg 不改，免得动引用。
              祈愿说明按合规口径同时写「随机」和「概率公示在哪」 -->
         <div class="shot"><img src="assets/shots/wish-67.jpg" data-en-src="assets/shots/en/wish-67.jpg" alt="华丽祈愿页（随机获得）：典藏皮肤「凤羽极光」，抽卡按钮旁有「概率公示」" data-i18n-alt="shot.wish67" loading="lazy" width="1280" height="720"></div>
         <div class="shot"><img src="assets/shots/vip-67.jpg" data-en-src="assets/shots/en/vip-67.jpg" alt="商城 VIP 页签：灯火月卡、灯塔基金" data-i18n-alt="shot.vip67" loading="lazy" width="1280" height="720"></div>
@@ -705,31 +706,9 @@
   <section id="install">
     <div class="wrap">
       <p class="kicker" data-i18n="in.kicker">安装教程</p>
-      <h2 data-i18n="in.h2">APK 怎么装：四步</h2>
-      <p class="lead" data-i18n="in.lead">安卓手机默认不让装“应用商店以外”的安装包，第一次要手动允许一下。下面灰白色的方框是提示的大概样子，不同品牌的字样会稍有不同，意思都一样。</p>
-
-      <ol class="steps">
-        <li class="step">
-          <h3 data-i18n="s1.h3">下载安装包</h3>
-          <p data-i18n="s1.p">用手机浏览器打开本页，点“下载 APK”。如果浏览器提醒“这类文件可能有害”，选“仍然下载”或“保留”。</p>
-          <div class="mock" data-i18n="s1.mock"><div class="t">要保留此文件吗？</div>lastlamp-6.8.1.apk 这类文件可能会损害你的设备。<div class="row"><span>取消</span><span class="tap">仍然下载</span></div></div>
-        </li>
-        <li class="step">
-          <h3 data-i18n="s2.h3">打开安装包</h3>
-          <p data-i18n="s2.p">下载完成后点通知栏或浏览器里的下载记录；找不到就打开“文件管理 → 下载（Download）”，点 <b>lastlamp-6.8.1.apk</b>。</p>
-          <div class="mock" data-i18n="s2.mock"><div class="file"><img src="lastlamp-icon.png" alt=""><div>lastlamp-6.8.1.apk<small>下载完成</small></div></div></div>
-        </li>
-        <li class="step">
-          <h3 data-i18n="s3.h3">允许安装</h3>
-          <p data-i18n="s3.p">第一次会提示不能安装未知来源的应用：点“设置”，打开“允许来自此来源的应用”，再返回。</p>
-          <div class="mock" data-i18n="s3.mock"><div class="sw"><span>允许来自此来源的应用</span><span class="toggle" aria-hidden="true"></span></div></div>
-        </li>
-        <li class="step">
-          <h3 data-i18n="s4.h3">安装并打开</h3>
-          <p data-i18n="s4.p">点“安装”，等几秒，装好点“打开”。桌面上会出现“最后一盏灯”，以后从桌面打开就行。</p>
-          <div class="mock" data-i18n="s4.mock"><div class="file"><img src="lastlamp-icon.png" alt=""><div>最后一盏灯<small>要安装此应用吗？</small></div></div><div class="row"><span>取消</span><span class="tap">安装</span></div></div>
-        </li>
-      </ol>
+      <!-- 11-22 老板定（选 A）：安装步骤整段（标题 in.h2、导语 in.lead、步骤 s1~s4）中英文一起删；
+           下面品牌提示 b1~b4、常见问题里其余提到安装包的句子不在这次范围，已列清单交小智问老板，没改。
+           .steps / .mock 样式留着没删（只是样式，恢复步骤段时不用再写） -->
 
       <div class="brands">
         <div class="brand-tip" data-i18n="b1"><b>华为 · 荣耀</b>如果提示“纯净模式”拦截，点“仍然安装”或“继续安装”；也可以在“设置 → 系统和更新 → 纯净模式”里暂时关掉。</div>
@@ -745,15 +724,15 @@
         </details>
         <details>
           <summary data-i18n="q2">提示“应用未安装”或“与已安装的应用冲突”</summary>
-          <p data-i18n="a2">本站的 APK 和 Google Play 版签名相同，可以互相覆盖安装。出现这个提示，通常是手机里装过别处下载的“最后一盏灯”，或者装的是更新的版本（不能用旧版覆盖新版）。前一种要先卸载旧的再装——注意卸载会清掉手机上的游戏进度。</p>
+          <p data-i18n="a2">请从 Google Play 安装和更新。出现这个提示，通常是手机里装过别处下载的“最后一盏灯”，或者装的是更新的版本（不能用旧版覆盖新版）。前一种要先卸载旧的再装——注意卸载会清掉手机上的游戏进度。</p>
         </details>
         <details>
           <summary data-i18n="q3">以后怎么更新？进度会不会丢？</summary>
-          <p data-i18n="a3">有新版本时回到本页下载新的 APK，直接安装覆盖就行，进度保留。本站 APK 和 Google Play 版签名相同，也可以改从 Google Play 安装和更新，进度都在。</p>
+          <p data-i18n="a3">有新版本时回到本页下载新的 APK，直接安装覆盖就行，进度保留。也可以从 Google Play 安装和更新。</p>
         </details>
         <details>
           <summary data-i18n="q4">安装包安全吗？</summary>
-          <p data-i18n="a4">APK 和 Google Play 上的是同一个安装包，用的是同一个官方签名（从 Google Play 后台导出），只在这个网站提供，不要从别的网站下载。想核对文件有没有被改过，可以算一下文件的 SHA-256，和“下载”里写的那串对比。</p>
+          <p data-i18n="a4">请从 Google Play 安装和更新，不要从别的网站下载。想核对文件有没有被改过，可以算一下文件的 SHA-256，和“下载”里写的那串对比。</p>
         </details>
         <details>
           <summary data-i18n="q5">游戏需要哪些权限？</summary>
@@ -801,7 +780,7 @@
 <script>
   // 中文 / English：中文写在网页里，英文在这张表里（键 = 元素上的 data-i18n）。没开脚本时就是中文页。
   // APK_VERSION：英文里的版本号、大小、日期、文件名（中文的在网页里，两处一起改）
-  // 11-22：官网 APK 仍暂停，本站没有 6.8.1 的文件 → 不写大小 / 字节数（中文同），恢复 APK 时补回 mb / bytes 并改 dl.meta、s2.mock
+  // 11-22：官网 APK 仍暂停，本站没有 6.8.1 的文件 → 不写大小 / 字节数（中文同），恢复 APK 时补回 mb / bytes 并改 dl.meta（安装步骤段 11-22 已删，要恢复从 git 历史取回）
   var APK = { ver: '6.8.1', file: 'lastlamp-6.8.1.apk', date: '22 November 2026' }
   var EN = {
     'meta.title': 'The Last Lamp · 森澜岛游戏',
@@ -920,20 +899,7 @@
     'dl.shaLabel': 'SHA-256:',
     'dl.note': '<b>Works on phones without Google services too.</b> On these phones the small banner ad may not load and the Google Play leaderboards aren’t available; the game itself is not affected at all.',
     'in.kicker': 'Install guide',
-    'in.h2': 'Installing the APK in four steps',
-    'in.lead': 'Android blocks apps from outside the app store by default, so the first time you need to allow it. The light grey boxes show roughly what you’ll see; the wording varies a little by brand, but it means the same.',
-    's1.h3': 'Download the file',
-    's1.p': 'Open this page in your phone’s browser and tap “Download APK”. If the browser warns that this type of file may be harmful, choose “Download anyway” or “Keep”.',
-    's1.mock': '<div class="t">Keep this file?</div>' + APK.file + ': this type of file can harm your device.<div class="row"><span>Cancel</span><span class="tap">Download anyway</span></div>',
-    's2.h3': 'Open the file',
-    's2.p': 'When it finishes, tap the notification or your browser’s downloads. Can’t find it? Open “Files → Downloads” and tap <b>' + APK.file + '</b>.',
-    's2.mock': '<div class="file"><img src="lastlamp-icon.png" alt=""><div>' + APK.file + '<small>Download complete</small></div></div>',
-    's3.h3': 'Allow the install',
-    's3.p': 'The first time, Android says it can’t install apps from unknown sources: tap “Settings”, turn on “Allow from this source”, then go back.',
-    's3.mock': '<div class="sw"><span>Allow from this source</span><span class="toggle" aria-hidden="true"></span></div>',
-    's4.h3': 'Install and open',
-    's4.p': 'Tap “Install”, wait a few seconds, then tap “Open”. “The Last Lamp” appears on your home screen; open it from there next time.',
-    's4.mock': '<div class="file"><img src="lastlamp-icon.png" alt=""><div>The Last Lamp<small>Do you want to install this app?</small></div></div><div class="row"><span>Cancel</span><span class="tap">Install</span></div>',
+    // 11-22 老板定（选 A）：in.h2 / in.lead / s1~s4（安装步骤段）中英文一起删
     'b1': '<b>Huawei · Honor</b>If “Pure mode” blocks it, tap “Install anyway” or “Continue installation”; you can also turn Pure mode off for now in “Settings → System &amp; updates → Pure mode”.',
     'b2': '<b>Xiaomi · Redmi</b>You may see a security check page: wait a few seconds, then tap “Continue installation”. If “Pure mode” is on, allow this one install when asked.',
     'b3': '<b>OPPO · OnePlus · realme · vivo</b>You may need to confirm your account password, or wait for a short countdown before “Continue installation” works. It’s a normal system safety prompt; just follow it.',
@@ -941,11 +907,11 @@
     'q1': 'It says “There was a problem parsing the package” or the package is invalid',
     'a1': 'Usually the download didn’t finish: delete it and download again. It can also mean the phone is older than Android 8.0, which isn’t supported.',
     'q2': 'It says “App not installed” or that it conflicts with an existing app',
-    'a2': 'The APK here has the same signature as the Google Play version, so either one can update the other. This message usually means a copy of The Last Lamp from somewhere else is installed, or the installed version is newer (you can’t install an older version over a newer one). In the first case, uninstall the old copy first — note that uninstalling clears the game progress on the phone.',
+    'a2': 'Please install and update the game through Google Play. This message usually means a copy of The Last Lamp from somewhere else is installed, or the installed version is newer (you can’t install an older version over a newer one). In the first case, uninstall the old copy first — note that uninstalling clears the game progress on the phone.',
     'q3': 'How do I update? Will I lose my progress?',
-    'a3': 'When a new version comes out, download the new APK from this page and install it over the old one; your progress stays. Because this APK and the Google Play version share the same signature, you can also switch to installing and updating through Google Play, with all your progress.',
+    'a3': 'When a new version comes out, download the new APK from this page and install it over the old one; your progress stays. You can also install and update through Google Play.',
     'q4': 'Is the APK safe?',
-    'a4': 'It’s the same package as on Google Play, with the same official signature (exported from the Google Play console), and it’s only offered on this site, so please don’t download it anywhere else. To check the file hasn’t been changed, compute its SHA-256 and compare it with the one under “Download”.',
+    'a4': 'Please install and update through Google Play, and don’t download it from other websites. To check the file hasn’t been changed, compute its SHA-256 and compare it with the one under “Download”.',
     'q5': 'What permissions does the game need?',
     // 第 5 问：权限句 = 合规 E-4 原文；商城句同中文（照隐私政策第 4 条，versionCode 55 起真钱不只买 Diamonds）
     'a5': 'Network access (for ads, Google Play leaderboards and cloud save, purchases, gameplay statistics and content updates) and the advertising ID (for Google ads). Gameplay statistics don’t include your name or email. The shop has optional in-app purchases, paid through Google Play: real money buys Diamonds, the Lamplight Monthly Card, the Lighthouse Fund and small limited-time holiday packs; Lucky Boxes, Spectacular Wishes, Revive Cards, the VIP Pass and so on are paid with Diamonds or Wish Tickets. Lucky Boxes and Spectacular Wishes give random items, and the chance of every item is shown in the game before you buy (Lucky Boxes in the shop, Wishes on the Odds page; see also our <a href="wish-odds.html#en">Wish odds</a> page). It doesn’t read your contacts, photos or location, and needs no account; your progress is saved on your phone, and also in Google Play Games cloud save when you’re signed in, so it comes back on a new phone. See the <a href="lastlamp/privacy.html">Privacy Policy</a> for details.',
