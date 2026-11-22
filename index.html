@@ -707,32 +707,23 @@
     <div class="wrap">
       <p class="kicker" data-i18n="in.kicker">安装教程</p>
       <!-- 11-22 老板定（选 A）：安装步骤整段（标题 in.h2、导语 in.lead、步骤 s1~s4）中英文一起删；
-           下面品牌提示 b1~b4、常见问题里其余提到安装包的句子不在这次范围，已列清单交小智问老板，没改。
-           .steps / .mock 样式留着没删（只是样式，恢复步骤段时不用再写） -->
-
-      <div class="brands">
-        <div class="brand-tip" data-i18n="b1"><b>华为 · 荣耀</b>如果提示“纯净模式”拦截，点“仍然安装”或“继续安装”；也可以在“设置 → 系统和更新 → 纯净模式”里暂时关掉。</div>
-        <div class="brand-tip" data-i18n="b2"><b>小米 · 红米</b>可能会进入安全检查页面，等几秒后点“继续安装”；如果开着“纯净模式”，按提示允许这一次安装。</div>
-        <div class="brand-tip" data-i18n="b3"><b>OPPO · 一加 · realme · vivo</b>可能要求先验证账号密码，或倒数几秒后才能点“继续安装”，这是系统的安全提醒，照提示点即可。</div>
-        <div class="brand-tip" data-i18n="b4"><b>三星 · 其他</b>如果没有弹出开关，到“设置 → 应用 → 特殊访问权限 → 安装未知应用”，给你用来下载的浏览器打开“允许”。</div>
-      </div>
+           11-22 第 2 次（老板选 A「只走 Google Play 下载，不留任何 APK 直装说法，拿不准的句子直接删」）：
+           品牌提示 b1~b4（纯净模式 / 安装未知应用 = 直装步骤）、q1/a1（解析包失败 = 直装报错）整条删；
+           a3 删「回到本页下载新的 APK…覆盖」、a4 删 SHA-256 核对句；中英文一起改。要恢复从官网仓库 git 历史取回。
+           .steps / .mock / .brands 样式留着没删（只是样式） -->
 
       <div class="faq">
-        <details>
-          <summary data-i18n="q1">提示“解析包时出现问题”或“安装包无效”</summary>
-          <p data-i18n="a1">多半是没下载完，删掉后重新下载一次；也可能是手机系统低于 Android 8.0，这类手机装不了。</p>
-        </details>
         <details>
           <summary data-i18n="q2">提示“应用未安装”或“与已安装的应用冲突”</summary>
           <p data-i18n="a2">请从 Google Play 安装和更新。出现这个提示，通常是手机里装过别处下载的“最后一盏灯”，或者装的是更新的版本（不能用旧版覆盖新版）。前一种要先卸载旧的再装——注意卸载会清掉手机上的游戏进度。</p>
         </details>
         <details>
           <summary data-i18n="q3">以后怎么更新？进度会不会丢？</summary>
-          <p data-i18n="a3">有新版本时回到本页下载新的 APK，直接安装覆盖就行，进度保留。也可以从 Google Play 安装和更新。</p>
+          <p data-i18n="a3">请从 Google Play 安装和更新，更新后进度保留。</p>
         </details>
         <details>
           <summary data-i18n="q4">安装包安全吗？</summary>
-          <p data-i18n="a4">请从 Google Play 安装和更新，不要从别的网站下载。想核对文件有没有被改过，可以算一下文件的 SHA-256，和“下载”里写的那串对比。</p>
+          <p data-i18n="a4">请从 Google Play 安装和更新，不要从别的网站下载。</p>
         </details>
         <details>
           <summary data-i18n="q5">游戏需要哪些权限？</summary>
@@ -899,19 +890,13 @@
     'dl.shaLabel': 'SHA-256:',
     'dl.note': '<b>Works on phones without Google services too.</b> On these phones the small banner ad may not load and the Google Play leaderboards aren’t available; the game itself is not affected at all.',
     'in.kicker': 'Install guide',
-    // 11-22 老板定（选 A）：in.h2 / in.lead / s1~s4（安装步骤段）中英文一起删
-    'b1': '<b>Huawei · Honor</b>If “Pure mode” blocks it, tap “Install anyway” or “Continue installation”; you can also turn Pure mode off for now in “Settings → System &amp; updates → Pure mode”.',
-    'b2': '<b>Xiaomi · Redmi</b>You may see a security check page: wait a few seconds, then tap “Continue installation”. If “Pure mode” is on, allow this one install when asked.',
-    'b3': '<b>OPPO · OnePlus · realme · vivo</b>You may need to confirm your account password, or wait for a short countdown before “Continue installation” works. It’s a normal system safety prompt; just follow it.',
-    'b4': '<b>Samsung · others</b>If no switch pops up, go to “Settings → Apps → Special access → Install unknown apps” and allow the browser you used to download.',
-    'q1': 'It says “There was a problem parsing the package” or the package is invalid',
-    'a1': 'Usually the download didn’t finish: delete it and download again. It can also mean the phone is older than Android 8.0, which isn’t supported.',
+    // 11-22 老板定（选 A）：in.h2 / in.lead / s1~s4（安装步骤段）中英文一起删；第 2 次再删 b1~b4、q1/a1，改 a3 / a4 / q4（同中文注释）
     'q2': 'It says “App not installed” or that it conflicts with an existing app',
     'a2': 'Please install and update the game through Google Play. This message usually means a copy of The Last Lamp from somewhere else is installed, or the installed version is newer (you can’t install an older version over a newer one). In the first case, uninstall the old copy first — note that uninstalling clears the game progress on the phone.',
     'q3': 'How do I update? Will I lose my progress?',
-    'a3': 'When a new version comes out, download the new APK from this page and install it over the old one; your progress stays. You can also install and update through Google Play.',
-    'q4': 'Is the APK safe?',
-    'a4': 'Please install and update through Google Play, and don’t download it from other websites. To check the file hasn’t been changed, compute its SHA-256 and compare it with the one under “Download”.',
+    'a3': 'Please install and update through Google Play; your progress stays after updating.',
+    'q4': 'Is the install package safe?',
+    'a4': 'Please install and update through Google Play, and don’t download it from other websites.',
     'q5': 'What permissions does the game need?',
     // 第 5 问：权限句 = 合规 E-4 原文；商城句同中文（照隐私政策第 4 条，versionCode 55 起真钱不只买 Diamonds）
     'a5': 'Network access (for ads, Google Play leaderboards and cloud save, purchases, gameplay statistics and content updates) and the advertising ID (for Google ads). Gameplay statistics don’t include your name or email. The shop has optional in-app purchases, paid through Google Play: real money buys Diamonds, the Lamplight Monthly Card, the Lighthouse Fund and small limited-time holiday packs; Lucky Boxes, Spectacular Wishes, Revive Cards, the VIP Pass and so on are paid with Diamonds or Wish Tickets. Lucky Boxes and Spectacular Wishes give random items, and the chance of every item is shown in the game before you buy (Lucky Boxes in the shop, Wishes on the Odds page; see also our <a href="wish-odds.html#en">Wish odds</a> page). It doesn’t read your contacts, photos or location, and needs no account; your progress is saved on your phone, and also in Google Play Games cloud save when you’re signed in, so it comes back on a new phone. See the <a href="lastlamp/privacy.html">Privacy Policy</a> for details.',
