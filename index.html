@@ -17,8 +17,7 @@
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
 <!--
   森澜岛游戏官网（GitHub Pages，仓库 NickOoi/NickOoi.github.io）。
-  更新 APK 时要改的地方：download/ 下放新文件；本页搜索 “APK_VERSION” 注释旁边的版本号、大小、日期、SHA-256 和下载链接
-  （中文写在网页里，英文在页尾脚本的 APK 常量里，两处都要改）。
+  下载只走 Google Play（11-22 老板选 A）：官网安装包卡、版本信息和校验码已删，download/ 下的旧文件留着没删；要恢复从 git 历史取回。
   app-ads.txt 给 AdMob 用，别删。
   标题用的字体（马善政毛笔楷书、思源宋体 Noto Serif SC、英文的 Cinzel，都是 SIL OFL 开源字体）在 assets/fonts/，只含本页标题用到的字；改了中文标题文字要重新生成子集（见 assets/fonts/README.txt）。
   中文 / English（2026-10-09 起）：中文写在网页里（不开脚本、搜索引擎看到的都是中文）；英文在页尾脚本的 EN 对照表里，
@@ -161,7 +160,8 @@
   .gallery .shot { scroll-snap-align: start; }
 
   /* 下载 */
-  .downloads { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+  /* 11-22 删安装包卡后只剩 Google Play 一张卡：改单列占满，和下面的提示框同宽（原两列会让卡只占左半边、右边空着） */
+  .downloads { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: start; }
   .dl { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 26px 26px 24px; display: flex; flex-direction: column; gap: 14px; }
   .dl.apk { border-color: rgba(255, 207, 110, 0.45); background: linear-gradient(180deg, var(--panel-2), var(--panel)); }
   .dl h3 { margin: 0; font-family: var(--serif); font-weight: 600; font-size: 24px; letter-spacing: 0.04em; display: flex; align-items: center; gap: 10px; }
@@ -226,7 +226,6 @@
     section { padding-block: 56px; }
     .feature, .feature:nth-child(even) { grid-template-columns: 1fr; gap: 18px; }
     .feature:nth-child(even) .shot { order: 0; }
-    .downloads { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr 1fr; }
     .about { grid-template-columns: 1fr; padding: 20px; }
   }
@@ -472,13 +471,8 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.6 2.3 13.9 12l-9.3 9.7c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1Zm10.4 10.9 2.3 2.4-10.4 6c-.3.2-.6.2-.9.2l9-8.6Zm4.2-3.3 2.2 1.3c.8.5.8 1.6 0 2.1l-2.2 1.3-2.6-2.4 2.6-2.3ZM6.9 1.6c.3 0 .6.1.9.2l10.4 6-2.3 2.4-9-8.6Z"/></svg>
           <span data-i18n="hero.play">Google Play 下载</span>
         </a>
-        <!-- 11-17 官网 APK 暂停提供（小智定）：原「下载 APK」按钮改去 Google Play；download/ 下的 APK 文件保留不删，恢复时把链接改回 #download -->
-        <a class="btn btn-line" href="https://play.google.com/store/apps/details?id=com.lastlamp.game&amp;utm_source=website&amp;utm_medium=referral&amp;utm_campaign=v681&amp;utm_content=hero_apk">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1ZM5 19h14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2Z"/></svg>
-          <span data-i18n="hero.apk">APK 暂停提供<small>请从 Google Play 安装</small></span>
-        </a>
+        <!-- 11-22 老板选 A（官网只讲 Google Play）：首屏第 2 个按钮（原「安装包暂停提供」）和下面那句提示（hero.hint）中英一起删；要恢复从官网仓库 git 历史取回 -->
       </div>
-      <p class="hint" data-i18n="hero.hint">官网 APK 暂停提供，请点上面的按钮从 Google Play 安装，以后会自动更新。</p>
       <!-- 首屏背景 assets/hero.jpg 是 v59 宣传插画（不是实机画面），合规 M-6 要求标出来 -->
       <p class="art-note" data-i18n="hero.artNote">首屏背景为宣传插画</p>
     </div>
@@ -667,8 +661,7 @@
   <section id="download">
     <div class="wrap">
       <p class="kicker" data-i18n="dl.kicker">下载</p>
-      <h2 data-i18n="dl.h2">两种方式，选一个就行</h2>
-      <p class="lead" data-i18n="dl.lead">官网 APK 暂停提供，请从 Google Play 安装，以后会自动更新。</p>
+      <!-- 11-22 老板选 A（官网只讲 Google Play）：删安装包卡后只剩一种方式，标题 dl.h2「两种方式，选一个就行」和导语 dl.lead 中英一起删 -->
 
       <div class="downloads">
         <div class="dl">
@@ -676,27 +669,8 @@
           <p data-i18n="dl.playP">在 Google Play 搜「最后一盏灯」，或点下面的按钮。自动更新，换手机也方便。</p>
           <div><a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.lastlamp.game&amp;utm_source=website&amp;utm_medium=referral&amp;utm_campaign=v681&amp;utm_content=download" data-i18n="dl.playBtn">去 Google Play 下载</a></div>
         </div>
-
-        <div class="dl apk">
-          <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffcf6e" d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1ZM5 19h14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2Z"/></svg><span data-i18n="dl.apkH">APK 安装包</span></h3>
-          <p data-i18n="dl.apkP">官网 APK 暂停提供，请从 Google Play 安装<span class="desk-only">；在电脑上看的话，用手机扫右边的二维码打开本页</span>。</p>
-          <!-- APK_VERSION：版本号、大小、日期、最低系统
-               11-22 阿灯：线上 = 6.8.1（versionCode 61）。官网 APK 仍暂停（11-17 小智定），本站没有 6.8.1 的安装包文件，
-               所以大小写「以 Google Play 显示为准」、SHA-256 那行先隐藏；恢复 APK 时填回真实字节数和 SHA-256，并去掉下面 .hash 的 display:none -->
-          <dl class="meta" data-i18n="dl.meta">
-            <dt>版本</dt><dd>6.8.1（Google Play）</dd>
-            <dt>大小</dt><dd>以 Google Play 显示为准</dd>
-            <dt>更新日期</dt><dd>2026 年 11 月 22 日</dd>
-            <dt>系统要求</dt><dd>Android 8.0 及以上</dd>
-          </dl>
-          <div class="apk-row">
-            <!-- APK_VERSION：下载链接（11-17 APK 暂停提供，改去 Google Play；恢复时改回 download/lastlamp-版本.apk 并加回 download 属性） -->
-            <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.lastlamp.game&amp;utm_source=website&amp;utm_medium=referral&amp;utm_campaign=v681&amp;utm_content=apk_card" data-i18n="dl.apkBtn">去 Google Play 安装</a>
-            <div class="qr"><img src="assets/qr-download.png" alt="扫码在手机上打开下载页" data-i18n-alt="dl.qrAlt" width="96" height="96"><span data-i18n="dl.qr">手机扫码<br>打开下载页</span></div>
-          </div>
-          <!-- APK_VERSION：SHA-256 -->
-          <div class="hash" style="display:none"><span data-i18n="dl.shaLabel">SHA-256：</span><code id="sha"></code><button type="button" id="copy-sha" data-i18n="dl.copy">复制</button></div>
-        </div>
+        <!-- 11-22 老板选 A（官网只讲 Google Play）：第 2 张安装包卡整张删（小标题、说明句、版本信息、Google Play 按钮、二维码、隐藏的校验码行），
+             连同页尾的复制校验码脚本和英文对照；download/ 下的旧文件留着没删（删要另外审批）。要恢复从官网仓库 git 历史取回 -->
       </div>
 
       <p class="note" data-i18n="dl.note"><b>没有 Google 服务的手机也能玩。</b>这类手机上底部的小横幅广告可能加载不出来，也用不了 Google Play 排行榜，游戏本身完全不受影响。</p>
@@ -770,9 +744,7 @@
 
 <script>
   // 中文 / English：中文写在网页里，英文在这张表里（键 = 元素上的 data-i18n）。没开脚本时就是中文页。
-  // APK_VERSION：英文里的版本号、大小、日期、文件名（中文的在网页里，两处一起改）
-  // 11-22：官网 APK 仍暂停，本站没有 6.8.1 的文件 → 不写大小 / 字节数（中文同），恢复 APK 时补回 mb / bytes 并改 dl.meta（安装步骤段 11-22 已删，要恢复从 git 历史取回）
-  var APK = { ver: '6.8.1', file: 'lastlamp-6.8.1.apk', date: '22 November 2026' }
+  // 11-22 老板选 A（官网只讲 Google Play）：安装包卡删了，原来给英文版本信息用的版本常量一起删（只有 dl.meta 用它）
   var EN = {
     'meta.title': 'The Last Lamp · 森澜岛游戏',
     'meta.desc': 'The Last Lamp 6.8.1 is out: the dark is vast, one lamp is enough. New Settings in town. Fly a little biplane to guard the seaside lighthouse from the shadows that come every night. Free on Google Play.',
@@ -791,8 +763,6 @@
     'hero.chip3': 'Single-player · Plays offline',
     'hero.chip4': 'Landscape · English / 中文',
     'hero.play': 'Get it on Google Play',
-    'hero.apk': 'APK paused for now<small>Install from Google Play instead</small>',
-    'hero.hint': 'The APK on this site is paused for now. Tap the button above to install from Google Play; updates arrive automatically.',
     'hero.artNote': 'Background image: promotional illustration.', // 11-16 小规逐字原句（小智定），中文「首屏背景为宣传插画」不动
     'game.kicker': 'The game',
     'game.h2': 'Guard the town’s last lamp',
@@ -876,18 +846,8 @@
     'shot.g6': 'From night 15: turbulence reverses your controls',
     'shot.g7': 'Lighthouse badges with permanent bonuses',
     'dl.kicker': 'Download',
-    'dl.h2': 'Two ways to get it',
-    'dl.lead': 'The APK on this site is paused for now. Please install from Google Play; updates arrive automatically.',
     'dl.playP': 'Search “The Last Lamp” on Google Play, or tap the button below. Updates arrive automatically, and moving to a new phone is easy.',
     'dl.playBtn': 'Get it on Google Play',
-    'dl.apkH': 'APK file',
-    'dl.apkP': 'The APK on this site is paused for now. Please install from Google Play<span class="desk-only">; on a computer, scan the QR code to open this page on your phone</span>.',
-    'dl.meta': '<dt>Version</dt><dd>' + APK.ver + ' (Google Play)</dd><dt>Size</dt><dd>As shown on Google Play</dd><dt>Updated</dt><dd>' + APK.date + '</dd><dt>Requires</dt><dd>Android 8.0 or later</dd>',
-    'dl.apkBtn': 'Get it on Google Play',
-    'dl.qrAlt': 'Scan to open the download page on your phone',
-    'dl.qr': 'Scan to open<br>this page on your phone',
-    'dl.copy': 'Copy',
-    'dl.shaLabel': 'SHA-256:',
     'dl.note': '<b>Works on phones without Google services too.</b> On these phones the small banner ad may not load and the Google Play leaderboards aren’t available; the game itself is not affected at all.',
     'in.kicker': 'Install guide',
     // 11-22 老板定（选 A）：in.h2 / in.lead / s1~s4（安装步骤段）中英文一起删；第 2 次再删 b1~b4、q1/a1，改 a3 / a4 / q4（同中文注释）
@@ -963,17 +923,6 @@
     })
   })
   if (pick() === 'en') apply('en')
-
-  // 复制 SHA-256（浏览器不让写剪贴板时，选中文字让玩家自己复制）
-  document.getElementById('copy-sha').addEventListener('click', function () {
-    var code = document.getElementById('sha')
-    var btn = this
-    var label = function () { return cur === 'en' ? 'Copy' : '复制' }
-    var done = function () { btn.textContent = cur === 'en' ? 'Copied' : '已复制'; setTimeout(function () { btn.textContent = label() }, 1600) }
-    var select = function () { var r = document.createRange(); r.selectNodeContents(code); var s = getSelection(); s.removeAllRanges(); s.addRange(r) }
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(code.textContent).then(done, select)
-    else select()
-  })
 </script>
 <script id="fx-js">
   // ===== 11-16 特效改版（见 head 里的说明）：进度条、滚动进场、卡片光斑、首屏柔光和火星粒子。只动样式类和装饰层，不碰文字 / 链接 =====
